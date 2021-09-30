@@ -74,7 +74,8 @@ export default {
 </script>
 
 <!-- Use preprocessors via the lang attribute! e.g. <style lang="scss"> -->
-<style>
+<style lang="scss" scoped>
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;

@@ -6,7 +6,7 @@
     <slot name="description"></slot>
   </div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 .place {
   display: flex;
   flex-direction: column;

@@ -2,6 +2,7 @@
     <div>
 <h1>Filter filter</h1>
 <router-link to="/filtering/with-methods">Filter with methods</router-link>
+<router-link to="/filtering/with-computed">Filter with computed</router-link>
     </div>
 </template>
 
@@ -16,7 +17,3 @@ export default defineComponent({
     }
 })
 </script>
-
-<style scoped>
-
-</style>

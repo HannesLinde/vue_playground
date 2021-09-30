@@ -41,7 +41,8 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
 $primary: #5968d7;
 
 .row {

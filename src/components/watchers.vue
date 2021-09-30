@@ -1,11 +1,18 @@
 <template>
       <div>
           <h2>Exercise</h2>
+          <p>A watcher watches whether a value gets changed and enables us to trigger actions depending on the vaue's changes. In this case the button click triggers a change of the orderStatus. And the watcher runs a setTimeout function, whenever orderStatus is changed. Resetting <code>orderStatus</code> leads to the bug that the message from <code>orderSubmitted</code> shows up again. This happens because the watcher only checks whether the value changes and not what the value actually is.</p>
+          <p><code>
+            orderStatus = {{orderStatus}}
+          </code></p>
             <button @click="getTaco">
                 Click me to order a taco
             </button>
             <h3>{{orderStatus}}</h3>
             <p v-if="orderSubmitted">{{orderSubmitted}}</p>
+            <p>You have ordered {{count}} tacos.</p>
+          <button @click="reset">
+reset            </button>
       </div>
 </template>
 
@@ -21,12 +28,17 @@ export default defineComponent({
     data() {
         return {
             orderStatus: 'Where is my taco?',
-            orderSubmitted: ''
+            orderSubmitted: '',
+            count: 0
         }
     },
     methods: {
         getTaco() {
             this.orderStatus = 'Here it comes!'
+            this.count++;
+        },
+        reset()  {
+            this.orderStatus = 'Order another one'
         }
     },
     watch: {
@@ -38,7 +50,8 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
 button {
   display: inline-block;
   border: none;

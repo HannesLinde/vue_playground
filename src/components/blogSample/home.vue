@@ -37,7 +37,7 @@ export default defineComponent({
 })
 </script>
 
-<style>
+<style lang="scss" scoped>
 body {
   font-family: 'Noto Serif JP', serif;
 }

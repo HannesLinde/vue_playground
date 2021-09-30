@@ -59,7 +59,7 @@ export default defineComponent({
   }
 })
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 body {
   width: 100vw;
   height: 100vh;

@@ -1,7 +1,8 @@
 <template>
   <div class="demo-tab">Home component</div>
 </template>
-<style>
+<style lang="scss" scoped>
+
 body {
   font-family: 'Noto Serif JP', serif;
 }
