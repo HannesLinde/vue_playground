@@ -1,7 +1,7 @@
 <template>
       <div>
           <h2>Exercise</h2>
-          <p>A watcher watches whether a value gets changed and enables us to trigger actions depending on the vaue's changes. In this case the button click triggers a change of the orderStatus. And the watcher runs a setTimeout function, whenever orderStatus is changed. Resetting <code>orderStatus</code> leads to the bug that the message from <code>orderSubmitted</code> shows up again. This happens because the watcher only checks whether the value changes and not what the value actually is.</p>
+          <p>A watcher watches whether a value gets changed and enables us to trigger actions depending on the value's changes. In this case the button click triggers a change of the orderStatus. And the watcher runs a setTimeout function, whenever orderStatus is changed. Resetting <code>orderStatus</code> leads to the bug that the message from <code>orderSubmitted</code> shows up again. This happens because the watcher only checks whether the value changes and not what the value actually is.</p>
           <p><code>
             orderStatus = {{orderStatus}}
           </code></p>

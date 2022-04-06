@@ -6,13 +6,17 @@
   </ul>-->
   <ul>
     <li @click="active='ball'">Ball animation with transition component</li>
-    <li @click="active='oh-no'">Animations just using CSS</li>
-    <li @click="active='sweet'">Sweet Transition</li>
+    <li @click="active='css'">Animations just using CSS</li>
+    <li @click="active='sweet'">Sweet Transition using vue specific transition tags</li>
+    <li @click="active='js'">Javascript</li>
     <li @click="active=''">None</li>
   </ul>
-  <sweet-transitions v-if="active=='ball'"></sweet-transitions>
-  <ball-animation v-if="active=='oh-no'"></ball-animation>
-  <class-animation v-if="active=='sweet'"></class-animation>
+  <sweet-transitions v-if="active==='sweet'"></sweet-transitions>
+  <ball-animation v-if="active==='ball'"></ball-animation>
+  <class-animation v-if="active==='css'"></class-animation>
+  <div v-if="active === 'js'">
+    JavaScript animations are best done with libraries like greensock. However, the really cool packages are not available for free and therefore the animation in this repo is not working.
+  </div>
   </template>
 <script lang="ts">
 import {defineComponent} from "vue";
@@ -29,7 +33,7 @@ export default defineComponent({
   components: {
     sweetTransitions,
     ballAnimation,
-    classAnimation
+    classAnimation,
   }
 })
 </script>

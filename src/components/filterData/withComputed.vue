@@ -32,25 +32,17 @@
     </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { computed, ref } from 'vue'
 
 interface Post {
-    author: string,
-    title: string,
-    label: string
+  author: string,
+  title: string,
+  label: string
 }
 
-export default defineComponent({
-    setup () {
-        
-
-        return {}
-    },
-    data() {
-    return {
-      selected: '',
-      posts: [
+const selected = ref('')
+const posts = ref([
         {
           author: '@vFitzgerald',
           title: 'Quod Ducimus Omnis',
@@ -101,40 +93,33 @@ export default defineComponent({
           title: 'Labore Ipsum Ad Pariatur',
           label: 'poetry'
         }
-      ],
-      categories: [
+      ]);
+const categories = ref([
         "Science",
         "Math",
         "Poetry",
         "History"
-      ],
-      newTitle: '',
-      newAuthor: '',
-      newLabel: '',
-    }
-  },
-  methods: {
-    addPost(){
-      let addedPost = {
-        author: this.newAuthor,
-        title: this.newTitle,
-        label: this.newLabel
-      };
-      this.posts.push(addedPost);
-      this.newAuthor= '',
-      this.newTitle= '',
-      this.newLabel = ''
-    }
-  },
-  computed: {
-    filterByLabel(): Post[] {
-      let filter = new RegExp(this.selected, 'i');
-      return this.posts.filter(post => post.label.match(filter))
-    }
-  }
-})
-</script>
+      ]);
+const newTitle = ref('');
+const newAuthor = ref('');
+const newLabel = ref('');
+const addPost = () => {
+  let addedPost = {
+    author: newAuthor.value,
+    title: newTitle.value,
+    label: newLabel.value
+  };
+  posts.value.push(addedPost);
+  newAuthor.value = '',
+      newTitle.value = '',
+      newLabel.value = ''
+};
 
+const filterByLabel = computed (() => {
+      let filter = new RegExp(selected.value, 'i');
+      return posts.value.filter((post: Post) => post.label.match(filter))
+    });
+</script>
 <style lang="scss" scoped>
 
 $primary: #5968d7;

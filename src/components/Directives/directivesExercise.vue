@@ -1,5 +1,5 @@
 <template>
-   <div id="app">
+  <h2>Sample 1</h2>
   <div class="row">
     <input v-model.number="num1" type="number" />
     <span>+</span>
@@ -7,38 +7,53 @@
     <span>=</span>
     <span>{{num1 + num2}}</span>
   </div>
+  <hr/>
+  <h2>Sample 2</h2>
   <div class="row second">
     <select name="meals" id="meals" v-model="selectedMeal">
     <option v-for="meal in meals" :id="meal" :value="meal.value" :key="meal.value">{{meal.value}}</option>
   </select>
     <p v-if="selectedMeal">My favorite meal is {{selectedMeal}}</p>
   </div>
-</div>
+  <pre>{{}}</pre>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
+import {ref} from 'vue';
 
-export default defineComponent({
-    setup () {
-        
+interface Meal {
+  value: string,
+  taste: number
+}
 
-        return {}
-    },
-    data() {
-    return {
-      num1: 0,
-      num2: 0,
-      meals: [
-        {value: "Burger and fries"},
-        {value: "Salad with Chicken"},
-        {value: "Pasta with Tomato Sauce"},
-        {value: "Tacos"},
-      ],
-      selectedMeal: '',
-    }
-  }
-})
+// interface Meals extends Array<Meal>
+
+interface ReactiveMeals {
+  value: Meal[]
+}
+
+const num1 = ref(0);
+const num2 = ref(0);
+const meals: ReactiveMeals = ref([ // typing?!??????
+  {
+    value: "Burger and fries",
+    taste: 1
+  },
+  {
+    value: "Salad with Chicken",
+    taste: 2
+  },
+  {
+    value: "Pasta with Tomato Sauce",
+    taste: 5
+  },
+  {
+    value: "Tacos",
+    taste: 8
+  },
+]);
+const selectedMeal = ref('');
+
 </script>
 
 <style lang="scss" scoped>
@@ -67,6 +82,8 @@ span {
 }
 
 .second {
+  flex-direction: column;
+  align-items: center;
   font-size: 18px;
   p {
     margin-left: 20px;

@@ -21,21 +21,34 @@ import animations from '../components/animations/main.vue';
 import ballAnimation from '../components/animations/ballAnimation/main.vue';
 import classAnimations from '../components/animations/classAnimations/main.vue';
 import sweetTransitions from '../components/animations/sweetTransitions/main.vue';
+import compositionApi from '../components/compositionAPI/compositionAPImain.vue';
+import storeBasics from '../components/storeBasics.vue';
+import composables from '../components/compositionAPI/composables.vue';
+import renderFunction from '../components/renderFunction.vue';
+import routingFun from '../components/routingFun.vue';
+import moduleStyle from '../components/moduleStyle.vue';
+import playground from '../components/playground.vue';
 
 const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
+    {
+    path: '/home',
     name: 'Home',
     component: Home
   },
- /* {
-    path: '/about',
-    name: 'About',
+  {
+    path: '/home/#width',
+    name: 'Width div',
+    component: Home
+  },
+  {path: '/', redirect: '/home'},
+  {
+    path: '/testing',
+    name: 'Testing',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/!* webpackChunkName: "about" *!/ '../views/About.vue')
-  },*/
+    component: () => import(/* webpackChunkName: "testing" */ '../components/testing.vue')
+  },
   {
     path: '/directives',
     name: 'Directives',
@@ -144,6 +157,41 @@ const routes: Array<RouteRecordRaw> = [
     path: '/animations/sweet-transition',
     name: 'sweet transition',
     component: sweetTransitions
+  },
+  {
+    path: '/composition-api',
+    name: 'Composition API',
+    component: compositionApi
+  },
+  {
+    path: '/store',
+    name: 'Store basics',
+    component: storeBasics
+  },
+  {
+    path: '/composition-api/composables',
+    name: 'Composables',
+    component: composables
+  },
+  {
+    path: '/render-function',
+    name: 'Render function',
+    component: renderFunction
+  },
+  {
+    path: '/routing-fun',
+    name: 'Routing',
+    component: routingFun
+  },
+  {
+    path: '/css-modules',
+    name: 'Style Modules',
+    component: moduleStyle
+  },
+  {
+    path: '/playground',
+    name: 'Playground',
+    component: playground
   }
 ]
 

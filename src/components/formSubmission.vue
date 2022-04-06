@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div id="container">
   <form @submit.prevent="submitForm">
     <div>
       <label for="name">Name:</label><br>
@@ -22,13 +22,13 @@
 </div>
 </template>
 
-<script lang="ts">
+<!--<script lang="ts">
 import { defineComponent } from 'vue';
 import axios from 'axios';
 
 export default defineComponent({
     setup () {
-        
+
 
         return {}
     },
@@ -58,12 +58,36 @@ export default defineComponent({
     }
   }
 })
+</script>-->
+<script lang="ts" setup>
+import { ref } from 'vue';
+import axios from 'axios';
+const name = ref('');
+const email = ref('');
+const caps = ref('');
+const response = ref('');
+const activeClass = 'active';
+
+const submitForm = () => {
+  axios.post('//jsonplaceholder.typicode.com/posts', {
+    name: name.value,
+    email: email.value,
+    caps: caps.value
+  }).then(responseData => {
+    response.value = JSON.stringify(responseData, null, 2);
+    name.value = '';
+    email.value = '';
+    caps.value = '';
+  }).catch(error => {
+    response.value = 'Error: ' + error.response.status
+  })
+}
 </script>
 
 <style scoped lang="scss">
 $primary: #5968d7;
 
-#app {
+#container {
   display: flex;
   justify-content: center;
   font-family: 'Work Sans', sans-serif;
@@ -106,16 +130,45 @@ button {
   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
   transition: 0.25s all ease;
   &:hover {
-    transform: translateY(2px);
+    transform: translateY(5px) translateX(5px);
   }
 }
 
 .active {
-  background: $primary;
+  animation-name: button-animation;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
 }
 
 pre-content {
   width: 300px;
 }
 
+@keyframes button-animation {
+  0%{
+    background-color: #cccccc;
+    width: 20%;
+  }
+  25% {
+    background-color: #888888;
+    width: 80%;
+    transform: rotate(90deg);
+  }
+  50% {
+    background-color: #555555;
+    width: 40%;
+    transform: rotate(180deg);
+  }
+  75% {
+    background-color: #2c3e50;
+    width: 60%;
+    transform: rotate(270deg);
+  }
+  100% {
+    background-color: darkslateblue;
+    width: 100%;
+    transform: rotate(360deg);
+  }
+
+}
 </style>

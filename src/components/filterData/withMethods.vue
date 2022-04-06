@@ -23,7 +23,7 @@
 </div>
 </template>
 
-<script lang>
+<script lang="ts">
 
 import { defineComponent } from 'vue'
 

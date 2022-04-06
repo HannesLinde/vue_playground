@@ -9,14 +9,25 @@
     <string-component :little-message="message" :littleList="list"></string-component>
     <string-component little-message="Hallöchen"></string-component>
   </div>
+  <div id="width" style="margin:10rem 0">Display width value from a function that lies inside the composables folder, using composition API:
+    <div>{{width}}</div>
+  </div>
 </template>
 
 <script lang="ts">
 import StringComponent from '@/components/stringComponent.vue';
 import { defineComponent } from 'vue';
+import compositionApi from "@/components/compositionAPI/compositionAPImain.vue";
+import useWindowWidth from "@/composables/useWindowWidth";
 
 export default defineComponent({
-  name: 'Home',
+  setup() {
+    const { width } = useWindowWidth();
+
+    return {
+      width
+    };
+  },
   data () {
     return {
       message: 'Hi there, string component',
@@ -31,10 +42,17 @@ export default defineComponent({
       {path: '/emit-events', name: 'Emit events'},
       {path: '/slot-machine', name: 'Slot machine'},
       {path: '/blog', name: 'Blog'},
-      {path: 'components-exercise', name: 'Components Exercise'},
+      {path: '/components-exercise', name: 'Components Exercise'},
       {path: '/hooks', name: 'Lifecycle hooks example'},
       {path: '/modal', name: 'Modal and Transition'},
       {path: '/animations', name: 'Animations'},
+      {path: '/composition-api', name: 'Composition API'},
+      {path: '/store', name: 'Store basics'},
+      {path: '/render-function', name: 'Render function'},
+      {path: '/routing-fun',name: 'Routing'},
+      {path: '/css-modules',name: 'CSS Modules'},
+      {path: '/playground',name: 'Playground'},
+      {path: '/testing',name: 'testing'}
     ]
     }
 },

@@ -7,7 +7,7 @@
     <textarea v-model.trim="name" rows="5"/>
     <p>Name: {{name}}</p>
     
-    <h2>v-for, v-if, v-bin (aka ":")</h2>
+    <h2>v-for, v-if, v-bind (aka <span style="font-family: monospace; background-color: #cccccc; padding: 0px 4px; border-radius: 3px;">:</span>)</h2>
       <div v-for="option in options" :key="option">
         <input
              type ="checkbox"
@@ -15,16 +15,19 @@
              :id="option.value"
              :value="option.value"
         />
-        <label :for = "option.value">{{option.value}}</label><br/>
+        <label
+            :for="option.value"
+            :class="[checkedNames.includes(option.value) ? strikeClass : '']"
+        >
+          {{option.value}}
+        </label><br/>
     </div>
     <h4>Checked names are:</h4>
     <div v-if="!checkedNames.length">
       No boxes ticked!
     </div>
-        <div :class="[checkedNames.length ? strikeClass : '']">
-      No boxes ticked
-    </div>
-    <div v-for="name in checkedNames" :key="name">
+
+    <div v-else v-for="name in checkedNames" :key="name">
         {{name}}
   </div>
     <h2>v-on (aka "@")</h2>
@@ -41,7 +44,7 @@
   </div>
 </template>
 
-<script lang>
+<script lang="ts">
 export default {
   data() {
     return {
@@ -49,15 +52,42 @@ export default {
       name: '',
       checkedNames: [],
       options: [
-        {value: 'Lisa'},
-        {value: 'Lutz'},
-        {value: 'Christopher'},
-        {value: 'Sita'},
-        {value: 'Anja'},
-        {value: 'Simon'},
-        {value: 'Robs'},
-        {value: 'Soubhi'},
-        {value: 'Mohammed'},
+        {
+          value: 'Lisa',
+          clicked: false
+        },
+        {
+          value: 'Lutz',
+          clicked: false
+        },
+        {
+          value: 'Christopher',
+          clicked: false
+        },
+        {
+          value: 'Sita',
+          clicked: false
+        },
+        {
+          value: 'Anja',
+          clicked: false
+        },
+        {
+          value: 'Simon',
+          clicked: false
+        },
+        {
+          value: 'Robs',
+          clicked: false
+        },
+        {
+          value: 'Soubhi',
+          clicked: false
+        },
+        {
+          value: 'Mohammed',
+          clicked: false
+        },
        ],
       strikeClass: 'strike',
       counter: 0,
@@ -66,7 +96,7 @@ export default {
     };
   },
   methods: {
-    xCoordinate(e) {
+    xCoordinate(e: MouseEvent): number {
      return this.x = e.clientX;
     }
   }
