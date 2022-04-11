@@ -1,83 +1,26 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <h1>Intro to vue</h1>
-    <ul>
-      <li v-for="route in routes" :key="route.path"><router-link :to="route.path">{{route.name}}</router-link></li>
-    </ul>
+  <div :class="$style.intro">
+    <h1>Welcome to my personal vue info site</h1>
     <hr>
-    <string-component :little-message="message" :littleList="list"></string-component>
-    <string-component little-message="Hallöchen"></string-component>
+    <p>Hi, on this website I collected the knowledge on VueJS that I gained from various courses from <strong><a target="_blank" href="https://frontendmasters.com">Frontendmasters</a></strong>. Special thanks to <a target="_blank" href="https://twitter.com/sarah_edo">Sarah Drasner</a> and <a target="_blank" href="https://twitter.com/bencodezen">Ben Hong</a>.</p>
   </div>
-  <div id="width" style="margin:10rem 0">Display width value from a function that lies inside the composables folder, using composition API:
-    <div>{{width}}</div>
-  </div>
+
+<!--Here you can see a component with props passed into it-->
+  <!--
+  <string-component :little-message="111"></string-component>
+  -->
 </template>
 
-<script lang="ts">
-import StringComponent from '@/components/stringComponent.vue';
-import { defineComponent } from 'vue';
-import compositionApi from "@/components/compositionAPI/compositionAPImain.vue";
-import useWindowWidth from "@/composables/useWindowWidth";
-
-export default defineComponent({
-  setup() {
-    const { width } = useWindowWidth();
-
-    return {
-      width
-    };
-  },
-  data () {
-    return {
-      message: 'Hi there, string component',
-      list: ["a","b","c"],
-    routes: [
-      {path: '/directives', name: 'Directives'},
-      {path: '/simple-form', name: 'Simple Form'},
-      {path: '/filtering', name: 'Filter Data'},
-      {path: '/watchers', name: 'Watchers'},
-      {path: '/string-component', name: 'String component'},
-      {path: '/comments', name: 'comment-section'},
-      {path: '/emit-events', name: 'Emit events'},
-      {path: '/slot-machine', name: 'Slot machine'},
-      {path: '/blog', name: 'Blog'},
-      {path: '/components-exercise', name: 'Components Exercise'},
-      {path: '/hooks', name: 'Lifecycle hooks example'},
-      {path: '/modal', name: 'Modal and Transition'},
-      {path: '/animations', name: 'Animations'},
-      {path: '/composition-api', name: 'Composition API'},
-      {path: '/store', name: 'Store basics'},
-      {path: '/render-function', name: 'Render function'},
-      {path: '/routing-fun',name: 'Routing'},
-      {path: '/css-modules',name: 'CSS Modules'},
-      {path: '/playground',name: 'Playground'},
-      {path: '/testing',name: 'testing'}
-    ]
-    }
-},
-  components: {
-    StringComponent
-    
-  },
-});
+<script setup lang="ts">
+import StringComponent from "@/components/stringComponent.vue";
 </script>
-<style lang="scss">
-ul {
-  list-style-type: none;
-  li {
-    padding-top: .5rem
-  }
-  a {
-    color: #42B983;
 
-    &.router-link-exact-active {
-      color: #42b983;
+<style lang="scss" module>
+  .intro {
+    padding: 1rem 0.5rem;
+
+    hr {
+      margin: 1rem 0rem;
     }
   }
-
-  a:hover {
-    color: dimgrey;
-  }
-}
 </style>

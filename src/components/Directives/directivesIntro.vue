@@ -1,11 +1,23 @@
 <!-- Use preprocessors via the lang attribute! e.g. <template lang="pug"> -->
 <template>
-  <div id="app">
+  <div id="directives-container">
     <h1>{{ message }}</h1>
-<h2 @mousemove="xCoordinate" :style="{backgroundColor: `hsl(${x}, 50%, 50%)`}">v-model</h2>
-    <p>Mouse-X-Coordinate{{x}}</p>
+    <div @mousemove="xCoordinate" :style="{width: '80vw', backgroundColor: `hsl(${x}, 50%, 50%)`}">
+      <h2>v-model</h2>
+      <p>Mouse-X-Coordinate: <span style="font-weight: bold">{{x}}</span></p>
+    </div>
     <textarea v-model.trim="name" rows="5"/>
-    <p>Name: {{name}}</p>
+    <div>
+      <select
+    v-model="color">
+      <option value="red">Red</option>
+      <option value="blue">Blue</option>
+      <option value="yellow">Yellow</option>
+      <option value="green">Green</option>
+    </select>
+      <p>{{color}}</p>
+    </div>
+    <p class="testX">Name: {{name}}</p>
     
     <h2>v-for, v-if, v-bind (aka <span style="font-family: monospace; background-color: #cccccc; padding: 0px 4px; border-radius: 3px;">:</span>)</h2>
       <div v-for="option in options" :key="option">
@@ -38,20 +50,18 @@
     </div>
     <h2>v-html</h2>
     <p v-html="htmlString"></p>
-    <h2>the pre tag used with $data</h2>
-    <pre>{{$data}}</pre>
             
   </div>
 </template>
 
-<script lang="ts">
-export default {
-  data() {
-    return {
-      message: "Welcome to Vue!",
-      name: '',
-      checkedNames: [],
-      options: [
+<script setup lang="ts">
+import {ref} from 'vue';
+
+const color = ref('red');
+const message = "Welcome to Vue!";
+const name = ref('');
+const checkedNames = ref([]);
+const options = [
         {
           value: 'Lisa',
           clicked: false
@@ -88,29 +98,30 @@ export default {
           value: 'Mohammed',
           clicked: false
         },
-       ],
-      strikeClass: 'strike',
-      counter: 0,
-      htmlString: '<a href="https://developer.mozilla.org/de/docs/Web/HTML" targe="_blank">v-html treats a parsed string as html</a>',
-      x: 0
-    };
-  },
-  methods: {
-    xCoordinate(e: MouseEvent): number {
-     return this.x = e.clientX;
+      ];
+const strikeClass = ref('strike');
+const counter = ref(0);
+const htmlString = '<a target="_blank" href="https://developer.mozilla.org/de/docs/Web/HTML" targe="_blank">v-html treats a parsed string as html</a>';
+const x = ref(0);
+const xCoordinate = (e: MouseEvent) => {
+      return x.value = e.clientX;
     }
-  }
-};
 </script>
-
 <!-- Use preprocessors via the lang attribute! e.g. <style lang="scss"> -->
 <style lang="scss" scoped>
 
-#app {
+#directives-container {
   font-family: Avenir, Helvetica, Arial, sans-serif;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+
+  div,h1,h2,h3,h4,p {
+    margin: 0.5rem
+  }
 }
 
 a,
@@ -127,5 +138,9 @@ button {
 }
   .strike {
     text-decoration: line-through
+  }
+
+  .testX {
+    background-color: v-bind(color);
   }
 </style>

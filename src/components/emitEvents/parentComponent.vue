@@ -7,27 +7,15 @@
         <p>{{deletionNotification}}</p>
     </div>
 </template>
-<script lang="ts">
-import {defineComponent} from 'vue';
+<script setup lang="ts">
+import {defineComponent, ref} from 'vue';
 import childComponent from './childComponent.vue'
-export default defineComponent({
-name:'parent-component',
-data() {
-    return {
-        text:'',
-        deletionNotification: ''
-    }
-},
-methods: {
-    deleteNow(characters: number){
-        this.text='';
-        this.deletionNotification=`You just deleted all the text with ${characters} characters`;
-
-        setTimeout(()=>this.deletionNotification='', 3000)
-    }
-},
-components: {
-    childComponent
-}    
-})
+const text = ref('');
+const deletionNotification = ref('');
+const deleteNow = (message: string, divisor: number) => {
+        const characters = text.value.length
+        text.value='';
+        deletionNotification.value=`${message}You just deleted all the text with ${divisor} times less characters than ${characters * divisor}`;
+        setTimeout(()=> deletionNotification.value = '', 3000)
+}
 </script>

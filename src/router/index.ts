@@ -11,10 +11,10 @@ import watchers from '../components/watchers.vue';
 import stringComponent from '../components/stringComponent.vue';
 import mainComments from '../components/commentSection/mainComments.vue';
 import parentComponent from '../components/emitEvents/parentComponent.vue';
-import slotMachine from '../components/slotMachine/home.vue';
-import defaultSlot from '../components/slotMachine/defaultSlots.vue';
+import slots from '../components/slots/home.vue';
+import defaultSlot from '../components/slots/defaultSlots.vue';
 import blog from '../components/blogSample/home.vue'
-import componentExercise from '../components/slotMachine/componentsExercise/main.vue';
+import componentExercise from '../components/slots/componentsExercise/main.vue';
 import hooksExample from '../components/lifeCyCleHooks/main.vue';
 import modal from '../components/modal/main.vue';
 import animations from '../components/animations/main.vue';
@@ -28,19 +28,26 @@ import renderFunction from '../components/renderFunction.vue';
 import routingFun from '../components/routingFun.vue';
 import moduleStyle from '../components/moduleStyle.vue';
 import playground from '../components/playground.vue';
+import About from '../views/About.vue'
+import LearningResources from '../views/LearningResources.vue'
 
 const routes: Array<RouteRecordRaw> = [
-    {
+  {path: '/', redirect: '/home'},
+  {
     path: '/home',
     name: 'Home',
     component: Home
   },
   {
-    path: '/home/#width',
-    name: 'Width div',
-    component: Home
+    path: '/about',
+    name: 'About',
+    component: About
   },
-  {path: '/', redirect: '/home'},
+  {
+    path: '/resources',
+    name: 'Learning Resources',
+    component: LearningResources
+  },
   {
     path: '/testing',
     name: 'Testing',
@@ -54,8 +61,16 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Directives',
     component: directives,
     children: [
-      
-     
+      /*{
+        path: 'intro',
+        name: 'Directives Intro',
+        component: directivesIntro
+      },
+      {
+        path: 'exercise',
+        name: 'Directives Exercise',
+        component: directivesExercise
+      }*/
     ]
   },
   {
@@ -109,9 +124,9 @@ const routes: Array<RouteRecordRaw> = [
     component: parentComponent
   },
   {
-    path: '/slot-machine',
-    name: 'Slot machine',
-    component: slotMachine
+    path: '/slots',
+    name: 'Slots',
+    component: slots
   },
   {
     path: '/default-slot',
@@ -124,8 +139,8 @@ const routes: Array<RouteRecordRaw> = [
     component: blog
   },
   {
-    path: '/components-exercise',
-    name: 'Components Exercise',
+    path: '/slots/exercise',
+    name: 'Slots Exercise',
     component: componentExercise
   },
   {

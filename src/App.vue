@@ -1,30 +1,64 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link>
+  <div id="app">
+  <header>
+  <base-header />
+  </header>
+  <div id="content-container">
+    <Side-Bar />
+    <div>
+      <h3 v-if="this.$route.path !== '/home'">{{this.$route.name}}</h3>
+      <router-view/>
+    </div>
   </div>
-  <router-view/>
+  <footer>
+    <base-footer/>
+  </footer>
+  </div>
 </template>
+<script setup lang="ts">
+import SideBar from './components/layout/SideBar';
+import BaseHeader from './components/layout/BaseHeader';
+
+import BaseFooter from './components/layout/BaseFooter';
+</script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  //background: #ffffff;
+* {
+  margin: 0;
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
+a {
+  color: #42b983;
+  text-decoration: none;
+  &:hover {
     color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
   }
+  &.router-link-exact-active {
+    color: #2c3e50;
+  }
+}
+
+footer {
+  width: 100vw;
+  position: fixed;
+  bottom: 0px;
+  opacity: 1;
+  background-color: white;
+}
+
+#content-container {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+
+header {
+  width: 100vw;
+  position: fixed;
+  top: 0px
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
 }
 </style>

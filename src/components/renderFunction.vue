@@ -1,24 +1,46 @@
-<script>
-import { h, reactive } from 'vue'
+<template>
+  <render />
+</template><script setup lang="ts">
+import { h, ref } from 'vue'
 
-export default {
-setup() {
-const state = reactive({
-count: 0
-})
+const count = ref(0)
 
 function increment() {
-state.count++
+  count.value++
 }
 
 // return the render function
-return () =>
-h(
-'div',
-{
-onClick: increment
-},
-`Does this work? Click the number! ${state.count}`
-)}
+const render = () => {
+  return [
+    h(
+        'h2',
+        'Working with the render function'
+    ),
+
+    h(
+        'div',
+        {
+          id: 'test-div',
+          onClick: increment,
+          innerHTML: 'Does this work? Click the button!'
+        }
+    ),
+    h(
+        'button',
+        {
+          class: 'fancy-button',
+          style: {
+            color: 'pink',
+            backgroundColor: 'green',
+            borderRadius: '5px',
+          },
+          onClick: increment
+        },
+        'Click me'
+    ),
+    h('p',
+        ` ${count.value}`
+    )]
 }
+
 </script>

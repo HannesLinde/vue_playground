@@ -2,7 +2,7 @@
   <div id="main-hook">
     <h3>Let's check out the lifecycle of this hur' child.</h3>
     <h4>Check the console!</h4>
-    <button @click="toggleShow">
+    <button @click="toggleDisplayChild">
       <span v-if="isShowing">Hide child</span>
       <span v-else>Show child</span>
     </button>
@@ -12,29 +12,23 @@
     </div>
   </div>
 </template>
-<script>
-import {defineComponent} from "vue";
+<script setup lang="ts">
 import HookChild from "@/components/lifeCyCleHooks/hookChild";
+import {onRenderTracked, onRenderTriggered, ref} from "vue";
 
-export default defineComponent({
-  components: {HookChild},
-  data() {
-    return {
-      isShowing: false
-    }
-  },
-  methods: {
-    toggleShow() {
-      this.isShowing = !this.isShowing;
-    }
-  },
-  renderTracked({ key, target, type }) {
-    console.log('[MAIN COMPONENT] renderTracked: ' + JSON.stringify({ key, target, type }))
-  },
-  renderTriggered({ key, target, type }) {
-    console.log('[MAIN COMPONENT] renderTriggered: ' + JSON.stringify({ key, target, type }))
-  }
-})
+const isShowing = ref(false)
+
+const toggleDisplayChild = () => {
+  isShowing.value = !isShowing.value;
+}
+
+onRenderTracked( ({ key, target, type }) => {
+  console.log('[MAIN COMPONENT] renderTracked: ' + JSON.stringify({ key, target, type }))
+});
+
+onRenderTriggered(({ key, target, type }) => {
+  console.log('[MAIN COMPONENT] renderTriggered: ' + JSON.stringify({ key, target, type }))
+});
 </script>
 <style lang="scss" scoped>
 body {

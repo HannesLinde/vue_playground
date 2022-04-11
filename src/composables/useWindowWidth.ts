@@ -1,21 +1,21 @@
-import {toRefs, onMounted, reactive, watch} from "vue";
+import {onMounted, watch, ref} from "vue";
 
 export default function useWindowWidth() {
-    const state = reactive({
-        width: 0
-    });
+    const width = ref(0);
 
     onMounted(() => {
-        state.width = window.innerWidth;
+        width.value = window.innerWidth;
     });
-// this does not really work --> not reactive!!
-    watch(state, (newValue, oldValue) => {
-        const newWidth = window.innerWidth;
-        console.log(newWidth)
-        newValue.width = newWidth})
+// this does not work --> not reactive!!
+//     watch(width, async (newValue, oldValue) => {
+//         const newWidth = window.innerWidth;
+//         console.log(newWidth)
+//         width.value = newWidth}
+//     );
+    window.addEventListener("resize", () => {
+        width.value = window.innerWidth;
+    })
 
 
-    return {
-        ...toRefs(state)
-    };
+    return width;
 }

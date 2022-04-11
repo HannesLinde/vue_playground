@@ -12,16 +12,45 @@
             <p v-if="orderSubmitted">{{orderSubmitted}}</p>
             <p>You have ordered {{count}} tacos.</p>
           <button @click="reset">
+            <p>Reset button is pretty useless because reset function is triggered by watcher anyways</p>
 reset            </button>
       </div>
 </template>
 
+<script setup lang="ts">
+import { ref, watch } from 'vue'
+
+const orderStatus = ref('Where is my taco?');
+const orderSubmitted = ref('');
+const count = ref(0);
+
+const getTaco = () => {
+      orderStatus.value = 'Here it comes!'
+      count.value++;
+    };
+
+const reset = () => {
+      orderStatus.value = 'Order another one'
+    };
+
+watch(orderStatus, async (newValue, oldValue) => {
+  if(orderStatus.value === 'Order another one') {return}
+
+  orderSubmitted.value = 'Your order was submitted';
+  setTimeout(() => {
+    orderSubmitted.value = '';
+    reset()
+  }, 1000);
+  }
+);
+</script>
+<!--
 <script lang="ts">
 import { defineComponent } from 'vue'
 
 export default defineComponent({
     setup () {
-        
+
 
         return {}
     },
@@ -48,7 +77,7 @@ export default defineComponent({
       }
     }
 })
-</script>
+</script>-->
 
 <style lang="scss" scoped>
 

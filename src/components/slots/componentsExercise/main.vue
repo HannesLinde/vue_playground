@@ -2,7 +2,7 @@
  <div>
    <h1>Your Upcoming Destinations</h1>
    <p>
-     This exercise could be solved in one billion ways: <a href="https://frontendmasters.com/courses/vue-3/components-solution/">Sarah's solution</a>
+     This exercise could be solved in one billion ways: <a target="_blank" href="https://frontendmasters.com/courses/vue-3/components-solution/">Sarah's solution</a>
    </p>
   <div class="location-contain">
       <single-destination v-for="location in locations" :key="location">
@@ -23,14 +23,10 @@
         </div>
  </div>
 </template>
-<script lang="ts">
-import {defineComponent} from "vue";
+<script setup lang="ts">
 import singleDestination from './singleDestination.vue'
 
-export default defineComponent({
-  data() {
-    return {
-      locations: [
+const locations = [
         {
           name: 'moscow',
           img: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/moscow.svg',
@@ -50,14 +46,8 @@ export default defineComponent({
           name: 'paris',
           img: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/paris2.svg',
           desc: `By the end of the 12th century, Paris had become the political, economic, religious, and cultural capital of France. Maurice de Sully undertook the construction of the Notre Dame Cathedral at its eastern extremity.`
-        },
-      ]
-    }
-  },
-  components: {
-    singleDestination
-  }
-})
+        }
+];
 </script>
 <style scoped lang="scss">
 body {

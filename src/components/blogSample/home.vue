@@ -1,42 +1,67 @@
 <template>
   <div id="dynamic-component-demo" class="demo">
     <button
-        @click="currentTab = tab"
+        @click="currentTab=tab"
         v-for="tab in tabs"
         :key="tab"
         :class="['tab-button', { active: currentTab === tab }]"
     >
       {{ tab }}
     </button>
-    <keep-alive>
+<keep-alive>
       <component :is="currentTabComponent"></component>
     </keep-alive>
+<!--          <keep-alive>-->
+<!--            <component :is="currentTabComponent != 'tabHome' ? tabPosts : tabHome"></component>-->
+<!--          </keep-alive>-->
   </div>
 </template>
-<script lang="ts">
-import {defineComponent} from "vue";
+<script setup lang="ts">
+import {computed, defineComponent, ref} from "vue";
+import TabPosts from "@/components/blogSample/tabPosts.vue";
+import TabHome from "@/components/blogSample/tabHome.vue";
+
+// register components --> with script setup they wouldn't be found otherwise
+// alternative pattern see out-commented script-tag below
+const components = {
+  TabPosts,
+  TabHome
+}
+
+const currentTab = ref('Home');
+const tabs = ref(['Home', 'Posts']);
+const currentTabComponent = computed((): any => {
+  const tabName = 'Tab' + currentTab.value;
+  return components[tabName];
+});
+</script>
+<!--<script lang="ts">
+import {computed, defineComponent, ref} from "vue";
 import tabPosts from "@/components/blogSample/tabPosts.vue";
 import tabHome from "@/components/blogSample/tabHome.vue";
 
 export default defineComponent({
-  data() {
+  setup() {
+    const currentTab = ref('Home');
+    const tabs = ['Home', 'Posts'];
+    const currentTabComponent = computed((): string => {
+      const tabName = 'tab' + currentTab.value;
+      return tabName
+    });
+
     return {
-      currentTab: 'Home',
-      tabs: ['Home', 'Posts']
+      currentTab,
+      tabs,
+      currentTabComponent
     }
-  },
-  computed: {
-    currentTabComponent(): string {
-      return 'tab' + this.currentTab
-    }
+
   },
   components: {
     tabHome,
     tabPosts
   }
 })
-</script>
-
+</script>-->
 <style lang="scss" scoped>
 body {
   font-family: 'Noto Serif JP', serif;
@@ -54,7 +79,7 @@ body {
   font-family: 'Noto Serif JP', serif;
   border: 1px solid #ccc;
   cursor: pointer;
-  background: #f0f0f0;
+  background: #ffffff;
   margin-bottom: -1px;
   margin-right: -1px;
 }
@@ -64,7 +89,7 @@ body {
 }
 
 .tab-button.active {
-  background: #ffffff;
+  background: #009922;
   text-decoration: underline ;
 }
 

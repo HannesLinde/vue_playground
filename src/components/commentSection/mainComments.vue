@@ -1,38 +1,43 @@
 <template>
     <div>
-        <input v-model="newComment" type="text" placeholder="Write a comment" />
+        <input @keyup="submitCommentFromInput" v-model="newComment" type="text" placeholder="Write a comment" />
         <button @click="submitComment">Comment!</button>
         <h3>Comment section</h3>
-        <ul>
+        <ul class="comments-list">
         <display-comment v-for="comment in comments" :key="comment" :comment="comment"></display-comment>
         </ul>
-        <pre>{{comments}}</pre>
     </div>
 </template>
-<script lang='ts'>
-import {defineComponent} from 'vue';
+<script setup lang='ts'>
 import displayComment from './displayComment.vue';
+import {ref} from "vue";
 
-export default defineComponent(
-  {
-    name:'main-comment',
-    data() {
-        return {
-            newComment: '',
-            comments: [
+const newComment = ref('');
+const comments = ref([
                 'Cool!',
                 'Love it!',
                 'Horrible!'
-            ]
-        }
-    },
-    methods: {
-        submitComment() {
-            this.comments.push(this.newComment);
-            this.newComment = ''
-        }
-    },
-    components: { displayComment }
+]);
 
-})
+const submitComment = () => {
+  comments.value.push(newComment.value);
+  newComment.value = ''
+}
+
+const submitCommentFromInput = (e) => {
+  if (e.keyCode !== 13) {
+    return;
+  }
+  submitComment();
+}
 </script>
+<style lang="scss" scoped>
+
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+</style>

@@ -13,29 +13,23 @@
     </transition>
   </div>
 </template>
-<script>
-import {defineComponent} from "vue";
+<script setup lang="ts">
 import modalChild from "./modalChild.vue"
+import {ref} from "vue";
 
-export default defineComponent({
-  data() {
-    return {
-      childIsShowing: false,
-      bkClass:'bk',
-      blurClass: 'blur'
-    }
-  },
-  methods: {
-    toggleShow() {
-      this.childIsShowing = !this.childIsShowing;
-    }
-  },
-  components: {
-    modalChild
-  }
-})
+const childIsShowing = ref(false);
+const bkClass = ref('bk');
+const blurClass = ref('blur');
+
+const toggleShow = () => {
+  childIsShowing.value = !childIsShowing.value;
+};
 </script>
 <style lang="scss" scoped>
+
+@keyframes slide-right {
+  100% {right: 10000px }
+}
 
 .fade-enter-active {
   transition: opacity 2.5s ease-out;
@@ -46,34 +40,29 @@ export default defineComponent({
 }
 
 .fade-enter-from, .fade-leave-to {
+  animation: slide-right 3s;
   opacity: 0;
 }
 
-body {
-  font-family: 'Roboto Mono', serif;
-  display: flex;
-  justify-content: center;
-}
-
 #modal-main {
-  text-align: center;
-  margin: 60px;
-  max-width: 370px;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-}
+  align-items: center;
 
-button {
-  font-family: 'Roboto Mono';
-  border: 2px solid black;
-  background: white;
-  padding: 10px 15px;
-  margin: 0 10px;
-  outline: 0;
-  width: 60%;
-  cursor: pointer;
+  button {
+    font-family: 'Roboto Mono';
+    border: 2px solid black;
+    background-color: white;
+    padding: 10px 15px;
+    margin: 0 10px;
+    outline: 0;
+    width: 60%;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #009922;
+    }
+  }
 }
 
 h4 {

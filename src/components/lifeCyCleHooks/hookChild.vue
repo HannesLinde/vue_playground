@@ -6,37 +6,35 @@
     <pre>{{joke}}</pre>
   </div>
 </template>
-<script>
-import {defineComponent} from "vue";
+<script setup lang="ts">
+import {onActivated, onBeforeMount, onBeforeUnmount, onMounted, onServerPrefetch, onUnmounted, ref} from "vue";
 import axios from "axios";
 
-export default defineComponent({
-  data() {
-    return {
-      joke: ''
-    }
-  },
-  beforeCreate() {
-    console.log("[CHILD COMPONENT] beforeCreate!");
-  },
-  created() {
-    axios
-        .get('https://api.chucknorris.io/jokes/random')
-        .then(response => this.joke=response.data.value);
-    console.log("[CHILD COMPONENT] created!");
-  },
-  beforeMount() {
-    console.log("[CHILD COMPONENT] beforeMount!"
-    );
-  },
-  mounted() {
+const joke = ref('joke');
+const getData = async() => {
+  axios
+    .get('https://api.chucknorris.io/jokes/random')
+    .then(response => {
+      console.log("[CHILD COMPONENT] response from server called by [getData()]",response);
+      joke.value = response.data.value
+    });
+  console.log("[CHILD COMPONENT] onActivated!");
+};
+
+onBeforeMount(() => {
+  console.log("[CHILD COMPONENT] onBeforeMount call [getData()]")
+  getData();
+});
+
+onMounted(() => {
     console.log("[CHILD COMPONENT] mounted!");
-  },
-  beforeUnmount() {
-    console.log("[CHILD COMPONENT] beforeUnmounted!");
-  },
-  unmounted() {
-    console.log("[CHILD COMPONENT] unmounted!");
-  }
-})
+});
+
+onBeforeUnmount (() => {
+  console.log("[CHILD COMPONENT] beforeUnmounted!");
+});
+
+onUnmounted(() => {
+  console.log("[CHILD COMPONENT] unmounted!");
+});
 </script>

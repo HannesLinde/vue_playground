@@ -9,53 +9,33 @@
       <p>Delivery time: {{ deliveryTime }} minutes</p>
       <p v-if="freeDelivery">Free Delivery!</p>
     </ul>
-    <button @click="addItems">Add an item - {{ numItems }}</button>
+    <button @click="addItems">Add an item: {{ numItems }}</button>
+    <p>By clicking on the button below you can toggle a component that uses <code>reactive()</code> instead of <code>ref()</code>. It looks perfectly the same, just the code is different.</p>
   <div><button @click="testAlternative = !testAlternative">Test alternative</button></div>
   <div><alternative-script v-if="testAlternative" /></div>
   </div>
 
 </template>
-<script>
-import {defineComponent} from "vue";
+<script setup lang="ts">
 import {ref} from "vue";
 import alternativeScript from './compositionAPIreactive.vue'
 
-export default defineComponent({
-  setup() {
     const restaurantName = ref(`Let's taco bout it`),
         options = ref(["Lengua", "Carnitas", "Al Pastor", "Pollo"]),
         numItems = ref(0),
         deliveryTime = ref(25),
         freeDelivery = true;
 
-    function log(){
+    const log = () => {
       console.log("$Route: ")
     }
 
-    function addItems() {
+    const addItems = () => {
       log();
       numItems.value++;
     }
 
-    return {
-      restaurantName,
-      options,
-      numItems,
-      deliveryTime,
-      freeDelivery,
-      addItems,
-
-    };
-  },
-  data() {
-    return {
-      testAlternative: false
-    }
-  },
-  components: {
-    alternativeScript
-  }
-})
+    const testAlternative = ref(false);
 </script>
 <style lang="scss" scoped>
 body {

@@ -11,32 +11,19 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import useWindowWidth from "../../composables/useWindowWidth";
+import {computed} from "vue";
 
-export default {
-  data() {
-    return {
-      message: "Hi from Options API!"
-    };
-  },
-  setup() {
-    const { width } = useWindowWidth();
-    return {
-      width,
-      // computedWidth
-    };
-  },
-  computed: {
-    widthDoubled() {
-      return this.width * 2;
-    }
-  },
-  methods: {
-    reportWidth() {
-      alert(this.width);
-    }
-  }
+const message = "Hi from Options API!"
+const width = useWindowWidth();
+const widthDoubled = computed (() => {
+  console.log(width)
+
+  return width.value * 2;
+});
+const reportWidth = () => {
+      alert(width);
 };
 </script>
 

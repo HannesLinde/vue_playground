@@ -8,7 +8,7 @@
 </template>
 <script>
 import {defineComponent} from "vue";
-import slotChild from "./slots";
+import slotChild from "./slotsDemo";
 export default defineComponent({
   components: {slotChild}
 })

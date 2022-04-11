@@ -1,5 +1,7 @@
 <template>
   <h1>Vue Router</h1>
+  <p>Add the vue-router to your project: <code>yarn add vue-router@4</code></p>
+  <p><a target="_blank" href="https://router.vuejs.org/">See docs</a></p>
   <h2>Generally speaking on routing</h2>
   <p>
     Add a dynamic key to all router-view components using <code>$route.fullPath</code>. Ben Hong mentions three categories of routing:

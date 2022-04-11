@@ -3,9 +3,17 @@
     <slot name="image"></slot>
     <slot name="city">
     </slot>
-    <slot name="description"></slot>
+    <slot name="description">
+    </slot>
   </div>
 </template>
+<script lang="ts">
+import {defineComponent} from "vue";
+
+export default defineComponent({
+  name: 'singleDestination'
+})
+</script>
 <style lang="scss" scoped>
 .place {
   display: flex;

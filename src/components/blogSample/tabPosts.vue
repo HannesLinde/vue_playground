@@ -7,30 +7,34 @@
           :class="{
           'dynamic-component-demo-active': post === selectedPost
         }"
-          @click="selectedPost = post"
+          @click="selectedPost ? selectedPost = null : selectedPost = post"
       >
         {{ post.title }}
       </li>
     </ul>
     <div class="dynamic-component-demo-post-container">
-      <div v-if="selectedPost" class="dynamic-component-demo-post">
+      <strong v-if="!selectedPost">
+        Click on a blog title to view it.
+      </strong>
+      <div v-else class="dynamic-component-demo-post">
         <h3>{{ selectedPost.title }}</h3>
         <img :src='selectedPost.img' :alt='selectedPost.title'>
         <div v-html="selectedPost.content"></div>
       </div>
-      <strong v-else>
-        Click on a blog title to the left to view it.
-      </strong>
     </div>
   </div>
 </template>
-<script lang="ts">
-import {defineComponent} from "vue";
+<script setup lang="ts">
+import {Ref, ref} from "vue";
 
-export default defineComponent({
-  data() {
-    return {
-      posts: [
+interface Post {
+  id: number,
+  title: string,
+  img: string,
+  content: string
+}
+
+const posts: Array<Post>= [
         {
           id: 1,
           title: 'Doggo Ipsum',
@@ -52,11 +56,8 @@ export default defineComponent({
           content:
               '<p>Icing dessert soufflé lollipop chocolate bar sweet tart cake chupa chups. Soufflé marzipan jelly beans croissant toffee marzipan cupcake icing fruitcake. Muffin cake pudding soufflé wafer jelly bear claw sesame snaps marshmallow. Marzipan soufflé croissant lemon drops gingerbread sugar plum lemon drops apple pie gummies. Sweet roll donut oat cake toffee cake. Liquorice candy macaroon toffee cookie marzipan.</p>'
         }
-      ],
-      selectedPost: null
-    }
-  }
-})
+      ];
+const selectedPost: Ref<null | Post> = ref(null);
 </script>
 <style lang="scss" scoped>
 

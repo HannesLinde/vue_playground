@@ -12,6 +12,9 @@ export default createStore({
   mutations: {
     increment: (state,payload) => {
       state.counter +=payload;
+    },
+    setToZero: (state, payload) => {
+      state.counter = 0;
     }
   },
   actions: {
@@ -19,6 +22,9 @@ export default createStore({
       setTimeout(() => {
         commit('increment', asyncNum.by); // call increment mutation
       }, asyncNum.duration)
+    },
+    reset:({commit}) => {
+      commit('setToZero')
     }
   },
   modules: {
