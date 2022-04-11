@@ -1,33 +1,46 @@
-<script>
-export default {
-  name: "playground.vue",
-  props: {
-    msg: {
-      type: String,
-      required: false,
-      default: 'Default prop!',
-      validator: (value) => {
-        console.log(value);
-      }
-    }
-  }
-}
+<script setup lang="ts">
+import {defineProps} from "vue";
+const props = defineProps({
+  msg: {
+    type: String,
+    required: false,
+    default: 'Default prop!',
+    // validator: (value) => {
+    //   console.log(value);
+    // }
+  }}
+);
 </script>
 
 <template>
-<h2>
-  Notes
-</h2>
+<h4>
+  Next steps
+</h4>
+  <div id="content-container">
   <ul>
     <li>
-      use v-bind in a component
+      implement unit tests with jest
     </li>
-    <li>{{$attrs}}, {{msg}}</li>
+    <li>
+      implement e2e tests with cypress
+    </li>
     <li></li>
     <li></li>
   </ul>
+  </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  //text-align: left;
+}
 
+#content-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 </style>
