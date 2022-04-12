@@ -37,8 +37,8 @@
 </template>
 <script>
 import {defineComponent} from "vue";
-import sweetChild from "@/components/animations/sweetTransitions/sweetChild";
-import uglyChild from "@/components/animations/sweetTransitions/uglyChild";
+import sweetChild from "@/components/AnimationsSweetTransitionsSweetChild";
+import uglyChild from "@/components/AnimationsSweetTransitionsUglyChild";
 
 export default defineComponent({
   components: {

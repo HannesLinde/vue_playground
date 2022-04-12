@@ -18,8 +18,8 @@
 </template>
 <script setup lang="ts">
 import {computed, defineComponent, ref} from "vue";
-import TabPosts from "@/components/blogSample/tabPosts.vue";
-import TabHome from "@/components/blogSample/tabHome.vue";
+import TabPosts from "@/components/BlogTabPosts.vue";
+import TabHome from "@/components/BlogTabHome.vue";
 
 // register components --> with script setup they wouldn't be found otherwise
 // alternative pattern see out-commented script-tag below
@@ -37,8 +37,8 @@ const currentTabComponent = computed((): any => {
 </script>
 <!--<script lang="ts">
 import {computed, defineComponent, ref} from "vue";
-import tabPosts from "@/components/blogSample/tabPosts.vue";
-import tabHome from "@/components/blogSample/tabHome.vue";
+import tabPosts from "@/components/blogSample/BlogTabPosts.vue";
+import tabHome from "@/components/blogSample/BlogMain.vue";
 
 export default defineComponent({
   setup() {

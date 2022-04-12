@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import StringComponent from "@/components/stringComponent.vue";
+import StringComponent from "@/components/PropsChildComponent.vue";
 </script>
 
 <style lang="scss" module>

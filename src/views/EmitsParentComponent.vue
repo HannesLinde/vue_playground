@@ -15,7 +15,7 @@
 </template>
 <script setup lang="ts">
 import {defineComponent, ref} from 'vue';
-import childComponent from './childComponent.vue'
+import childComponent from '../components/EmitsChildComponent.vue'
 const text = ref('');
 const deletionNotification = ref('');
 const deleteNow = (message: string, divisor: number) => {

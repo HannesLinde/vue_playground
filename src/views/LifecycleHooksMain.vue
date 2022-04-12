@@ -13,7 +13,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import HookChild from "@/components/lifeCyCleHooks/hookChild";
+import HookChild from "@/components/LifecycleHooksChild.vue";
 import {onRenderTracked, onRenderTriggered, ref} from "vue";
 
 const isShowing = ref(false)

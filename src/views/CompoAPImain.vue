@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="compo-api-main">
     <p>Composition API helps us to encapsulate bits of functionality that we want to reuse. Write reusable functional code in seperate files (e.g. src/composables/...) and import respective functions in your component. THen include the functions/values in the setup directive.</p>
     <router-link :to="{name: 'Composables'}">Composable sample</router-link>
     <h3>Order from: <strong>{{ restaurantName }}</strong></h3>
@@ -18,7 +18,7 @@
 </template>
 <script setup lang="ts">
 import {ref} from "vue";
-import alternativeScript from './compositionAPIreactive.vue'
+import alternativeScript from '../components/CompoAPIreactive.vue'
 
     const restaurantName = ref(`Let's taco bout it`),
         options = ref(["Lengua", "Carnitas", "Al Pastor", "Pollo"]),
@@ -42,10 +42,9 @@ body {
   font-family: 'Bitter', serif;
 }
 
-#app {
+#compo-api-main {
   text-align: center;
-  padding: 70px;
-  max-width: 360px;
+  max-width: 720px;
   font-size: 16px;
   margin: 0 auto;
   display: table;

@@ -1,7 +1,7 @@
 <template>
-    <div>
-<div class="contain">
-    <h2>Blog Posts</h2>
+  <p id="base-info">Filter data with computed properties. Compare this code with the code from <router-link to="/methods">filtering with basic methods</router-link></p>
+  <div class="contain">
+  <h2>Blog Posts</h2>
 
     <div class="new">
       <h3>Add a New Post</h3>
@@ -29,7 +29,6 @@
     </div>
   <pre>{{filterByLabel}}</pre>
   </div>
-    </div>
 </template>
 
 <script lang="ts" setup>
@@ -116,19 +115,13 @@ const addPost = () => {
 };
 
 const filterByLabel = computed (() => {
-      let filter = new RegExp(selected.value, 'i');
-      return posts.value.filter((post: Post) => post.label.match(filter))
-    });
+  let filter = new RegExp(selected.value, 'i');
+  return posts.value.filter((post: Post) => post.label.match(filter))
+});
 </script>
 <style lang="scss" scoped>
 
 $primary: #5968d7;
-
-#app {
-  display: flex;
-  justify-content: center;
-  font-family: 'Work Sans', sans-serif;
-}
 
 h2 {
   text-transform: uppercase;
@@ -145,13 +138,12 @@ li {
   }
 }
 
-.contain {
-  width: 400px;
-  padding: 10px 40px;
-}
-
 input, select {
   font-family: 'Work Sans', sans-serif;
+}
+
+select {
+  width: 100%;
 }
 
 button {
@@ -175,8 +167,14 @@ button {
   }
 }
 
-select {
-  width: 100%;
+#base-info {
+  margin-top: 1rem;
+}
+.contain {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: 2rem;
 }
 
 .post, .new {

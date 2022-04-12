@@ -10,9 +10,10 @@
 const routes = [
   {path: '/directives', name: 'Directives'},
   {path: '/simple-form', name: 'Simple Form'},
-  {path: '/filtering', name: 'Filter Data'},
+  {path: '/methods', name: 'Basic methods'},
+  {path: '/computed-properties', name: 'Computed properties'},
   {path: '/watchers', name: 'Watchers'},
-  {path: '/string-component', name: 'String component'},
+  {path: '/props', name: 'Props basics'},
   {path: '/comments', name: 'comment-section'},
   {path: '/emit-events', name: 'Emit events'},
   {path: '/slots', name: 'Slots'},

@@ -14,7 +14,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import modalChild from "./modalChild.vue"
+import modalChild from "../../components/ModalChild.vue"
 import {ref} from "vue";
 
 const childIsShowing = ref(false);

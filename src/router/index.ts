@@ -1,29 +1,28 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
-import directives from '../components/directives.vue';
-import directivesIntro from '../components/Directives/directivesIntro.vue';
-import directivesExercise from '../components/Directives/directivesExercise.vue';
-import formSubmission from '../components/formSubmission.vue';
-import filterData from '../components/filterData.vue';
-import withMethods from '../components/filterData/withMethods.vue';
-import withComputed from '../components/filterData/withComputed.vue';
+import directives from '../views/DirectivesMain.vue';
+import directivesIntro from '../views/DirectivesIntro.vue';
+import directivesExercise from '../views/DirectivesExercise.vue';
+import formSubmission from '../views/examples/FormSubmission.vue';
+import Methods from '../views/MethodsBasic.vue';
+import ComputedProperties from '../views/ComputedProperties.vue';
 import watchers from '../components/watchers.vue';
-import stringComponent from '../components/stringComponent.vue';
-import mainComments from '../components/commentSection/mainComments.vue';
-import parentComponent from '../components/emitEvents/parentComponent.vue';
-import slots from '../components/slots/home.vue';
-import defaultSlot from '../components/slots/defaultSlots.vue';
-import blog from '../components/blogSample/home.vue'
-import componentExercise from '../components/slots/componentsExercise/main.vue';
-import hooksExample from '../components/lifeCyCleHooks/main.vue';
-import modal from '../components/modal/main.vue';
-import animations from '../components/animations/main.vue';
-import ballAnimation from '../components/animations/ballAnimation/main.vue';
-import classAnimations from '../components/animations/classAnimations/main.vue';
-import sweetTransitions from '../components/animations/sweetTransitions/main.vue';
-import compositionApi from '../components/compositionAPI/compositionAPImain.vue';
+import PropsBasics from '../views/PropsBasics.vue';
+import mainComments from '../views/examples/CommentsSectionMain.vue';
+import parentComponent from '../views/EmitsParentComponent.vue';
+import slots from '../views/SlotsMain.vue';
+import defaultSlot from '../views/SlotsDefaultSlots.vue';
+import blog from '../views/BlogMain.vue'
+import componentExercise from '../views/SlotsExerciseMain.vue';
+import hooksExample from '../views/LifecycleHooksMain.vue';
+import modal from '../views/examples/ModalMain.vue';
+import animations from '../views/AnimationsMain.vue';
+import ballAnimation from '../components/AnimationsBallAnimationMain.vue';
+import classAnimations from '../components/AnimationsClassAnimation.vue';
+import sweetTransitions from '../components/AnimationsSweetTransitionsMain.vue';
+import compositionApi from '../views/CompoAPImain.vue';
 import storeBasics from '../components/storeBasics.vue';
-import composables from '../components/compositionAPI/composables.vue';
+import composables from '../views/CompoAPIComposables.vue';
 import renderFunction from '../components/renderFunction.vue';
 import routingFun from '../components/routingFun.vue';
 import moduleStyle from '../components/moduleStyle.vue';
@@ -89,19 +88,14 @@ const routes: Array<RouteRecordRaw> = [
     component: formSubmission
   },
   {
-    path: '/filtering',
-    name: 'Filtering data',
-    component: filterData
+    path: '/methods',
+    name: 'Methods',
+    component: Methods
   },
   {
-    path: '/filtering/with-methods',
-    name: 'Filtering data with methods',
-    component: withMethods
-  },
-  {
-    path: '/filtering/with-computed',
-    name: 'Filtering data with computed',
-    component: withComputed
+    path: '/computed-properties',
+    name: 'Computed properties',
+    component: ComputedProperties
   },
   {
     path: '/watchers',
@@ -109,9 +103,9 @@ const routes: Array<RouteRecordRaw> = [
     component: watchers
   },
   {
-    path: '/string-component',
-    name: 'string component',
-    component: stringComponent
+    path: '/props',
+    name: 'Props basics',
+    component: PropsBasics
   },
   {
     path: '/comments',

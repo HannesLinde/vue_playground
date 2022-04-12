@@ -24,7 +24,7 @@
  </div>
 </template>
 <script setup lang="ts">
-import singleDestination from './singleDestination.vue'
+import singleDestination from '../components/SlotsExerciseSingleDestination.vue'
 
 const locations = [
         {

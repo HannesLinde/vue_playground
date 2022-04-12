@@ -1,15 +1,15 @@
 <template>
   <div id="app">
   <header>
-  <base-header />
+    <base-header />
   </header>
-  <div id="content-container">
+  <main>
     <Side-Bar />
-    <div>
+    <div id="main-view-container">
       <h3 v-if="this.$route.path !== '/home'">{{this.$route.name}}</h3>
       <router-view/>
     </div>
-  </div>
+  </main>
   <footer>
     <base-footer/>
   </footer>
@@ -46,19 +46,29 @@ footer {
   background-color: white;
 }
 
-#content-container {
-  display: grid;
-  grid-template-columns: 1fr 5fr;
-}
-
 header {
   width: 100vw;
   position: fixed;
   top: 0px
 }
 
-#app {
+main {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  margin-top: 8rem
+}
+
+#main-view-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center
 }
 </style>

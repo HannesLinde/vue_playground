@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="compo-api-composables-main">
     <h2>Options API</h2>
     <p>This is an example of the Options API. We just parse in a <code>message</code> variable from the data property in our component.</p>
     <p>{{ message }}</p>
@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import useWindowWidth from "../../composables/useWindowWidth";
+import useWindowWidth from "../composables/useWindowWidth";
 import {computed} from "vue";
 
 const message = "Hi from Options API!"
@@ -28,8 +28,7 @@ const reportWidth = () => {
 </script>
 
 <style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+#compo-api-composables-main {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

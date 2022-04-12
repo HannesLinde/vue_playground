@@ -1,5 +1,5 @@
 <template>
-  <p>Props: {{littleMessage}}</p>
+  <p><strong>Props:</strong> {{littleMessage}}</p>
   <ul>
       <li v-for="item in littleList" :key="item">{{item}}</li>
   </ul>
@@ -23,3 +23,8 @@ const props = defineProps({
   }
 });
 </script>
+<style lang="scss" scoped>
+li{
+  text-align: left;
+}
+</style>

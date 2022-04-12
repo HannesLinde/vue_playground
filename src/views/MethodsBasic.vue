@@ -1,9 +1,10 @@
 <template>
-    <div>
-  <h3>Sort titles by: 
+    <div class="page-container">
+      <p>Filter data with computed properties. Compare this code with the code from <router-link to="/computed-properties">filtering with computed properties</router-link></p>
+      <p>Sort titles by:
     <button @click="sortLowest">Lowest Rated</button>
     <button @click="sortHighest">Highest Rated</button>
-  </h3>
+  </p>
   <table>
     <thead>
       <tr>
@@ -23,15 +24,11 @@
 </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
+import {ref} from "vue";
 
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-    data() {
-    return {
-      columns: ["title", "rating"],
-      ratingsInfo: [
+const columns = ref(["title", "rating"]);
+const ratingsInfo = ref([
         { title: `White Chicks`, rating: 82 },
         { title: `Grey's Anatomy`, rating: 98 },
         { title: `Prison Break`, rating: 98 },
@@ -53,18 +50,13 @@ export default defineComponent({
         { title: `Hunter X Hunter`, rating: 57 },
         { title: `Marvel's Luke Cage`, rating: 95 },
         { title: `Marvel's Iron Fist`, rating: 98 }
-      ]
-    }
-  },
-  methods: {
-    sortLowest() {
-      this.ratingsInfo.sort((a, b) => a.rating > b.rating ? 1 : -1);
-    },
-    sortHighest() {
-      this.ratingsInfo.sort((a, b) => a.rating < b.rating ? 1 : -1);
-    }
-  }
-})
+      ]);
+const sortLowest = () => {
+  ratingsInfo.value.sort((a, b) => a.rating > b.rating ? 1 : -1);
+};
+const sortHighest = () => {
+  ratingsInfo.value.sort((a, b) => a.rating < b.rating ? 1 : -1);
+};
 </script>
 
 <style lang="scss" scoped>
@@ -72,14 +64,8 @@ body, button {
   font-family: 'Bitter', serif;
 }
 
-#app {
-  padding: 30px;
-  max-width: 400px;
-  font-size: 15px;
-  margin: 0 auto;
-}
-
 table {
+  margin: 1rem;
   background: #444;
   color: white;
 }
@@ -109,9 +95,19 @@ tr:last-child {
 button {
   background: orangered;
   border: none;
-  padding: 5px 8px;
+  padding: .5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
   margin-right: 10px;
+
+  &:hover{
+    background-color: beige;
+  }
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>

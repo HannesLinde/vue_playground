@@ -11,7 +11,7 @@
 const routes = [
   {route: 'about', text: 'About me'},
   {route: 'resources', text: 'Learning ressources'},
-  {route: '', text: 'Home'}
+  {route: 'home', text: 'Home'}
 ]
 </script>
 

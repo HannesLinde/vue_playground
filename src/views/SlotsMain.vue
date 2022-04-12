@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Slot machine!</h1>
-    Slots seem to mainly make sense when you want to pass on HTML into existing logic and design. A classic example might be a blog/news site.
+    Slots seem to mainly make sense when you want to pass on HTML into existing logic and design. A classic example might be a blog/news site. It's also worth considering slots when you have a lot of props to pass in.
     <p><router-link to="/default-slot">Default Slot</router-link></p>
     <p><router-link to="/slots/exercise">Exercise on named slots</router-link></p>
     <h2>Slot demo</h2>
@@ -26,7 +26,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import slotsDemo from './slotsDemo.vue'
+import slotsDemo from '../components/SlotsDemo.vue'
 import {ref} from "vue";
 
 const slot1 = ref('');

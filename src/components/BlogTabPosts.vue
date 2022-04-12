@@ -65,6 +65,9 @@ body {
   font-family: 'Noto Serif JP', serif;
 }
 
+ul {
+  list-style-type: none;
+}
 
 li {
   cursor: pointer;

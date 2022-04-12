@@ -21,9 +21,9 @@
   </div>
 </template>
 
-<script ang="ts">
+<script lang="ts">
 import {defineComponent} from "vue";
-import AnimationChild from "./animationChild";
+import AnimationChild from "./AnimationBallAnimationChild";
 
 export default defineComponent({
   components: {AnimationChild},

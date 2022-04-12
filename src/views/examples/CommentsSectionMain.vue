@@ -9,7 +9,7 @@
     </div>
 </template>
 <script setup lang='ts'>
-import displayComment from './displayComment.vue';
+import displayComment from '../../components/CommentsSectionDisplayComment.vue';
 import {ref} from "vue";
 
 const newComment = ref('');
