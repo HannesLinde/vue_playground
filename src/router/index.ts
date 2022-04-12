@@ -25,7 +25,7 @@ import storeBasics from '../components/storeBasics.vue';
 import composables from '../views/CompoAPIComposables.vue';
 import renderFunction from '../components/renderFunction.vue';
 import routingFun from '../components/routingFun.vue';
-import moduleStyle from '../components/moduleStyle.vue';
+import Styles from '../views/Styles.vue';
 import playground from '../components/playground.vue';
 import About from '../views/About.vue'
 import LearningResources from '../views/LearningResources.vue'
@@ -193,9 +193,9 @@ const routes: Array<RouteRecordRaw> = [
     component: routingFun
   },
   {
-    path: '/css-modules',
-    name: 'Style Modules',
-    component: moduleStyle
+    path: '/css-styles',
+    name: 'CSS Styles',
+    component: Styles
   },
   {
     path: '/playground',

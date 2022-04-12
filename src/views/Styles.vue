@@ -17,7 +17,7 @@
 </template>
 <script setup lang="ts">
 import {ref, getCurrentInstance, computed} from "vue";
-import BaseCodeBlock from '@/components/BaseCodeBlock';
+import BaseCodeBlock from '@/components/BaseCodeBlock.vue';
 
 const headlineStyle = ref(false);
 const thisCompo = getCurrentInstance();

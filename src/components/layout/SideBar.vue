@@ -25,7 +25,7 @@ const routes = [
   {path: '/store', name: 'Store basics'},
   {path: '/render-function', name: 'Render function'},
   {path: '/routing-fun',name: 'Routing'},
-  {path: '/css-modules',name: 'CSS Modules'},
+  {path: '/css-styles',name: 'Styles'},
   {path: '/playground',name: 'Playground'},
   {path: '/testing',name: 'testing'}
 ];

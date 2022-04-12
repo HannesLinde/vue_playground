@@ -23,7 +23,7 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
-import AnimationChild from "./AnimationBallAnimationChild";
+import AnimationChild from "@/components/AnimationBallAnimationChild.vue";
 
 export default defineComponent({
   components: {AnimationChild},
