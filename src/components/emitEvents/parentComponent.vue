@@ -1,8 +1,14 @@
 <template>
-    <div>
+    <div style="background-color: lightblue">
+      <p>Parent component is lightblue</p>
         <p v-if="text">{{text}}</p>
         <p v-else>No text so far</p>
-        <input type="text" v-model="text" placeholder="enter some text" />
+        <input
+            type="text"
+            v-model="text"
+            placeholder="enter some text"
+            class="fancy-input"
+        />
         <child-component @deleteText="deleteNow"></child-component>
         <p>{{deletionNotification}}</p>
     </div>
@@ -19,3 +25,12 @@ const deleteNow = (message: string, divisor: number) => {
         setTimeout(()=> deletionNotification.value = '', 3000)
 }
 </script>
+<style lang="scss" scoped>
+.fancy-input {
+  text-align: center;
+  padding: .5rem 1rem;
+  margin: .5rem;
+  border: solid 2px lightgrey;
+  border-radius: 0.3rem
+}
+</style>
