@@ -1,6 +1,6 @@
 <template>
     <div class="page-container">
-      <p>Filter data with computed properties. Compare this code with the code from <router-link to="/computed-properties">filtering with computed properties</router-link></p>
+      <p>Filter data with a simple method. Compare this code with the code from <router-link to="/computed-properties">filtering with computed properties</router-link></p>
       <p>Sort titles by:
     <button @click="sortLowest">Lowest Rated</button>
     <button @click="sortHighest">Highest Rated</button>

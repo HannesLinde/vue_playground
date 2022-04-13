@@ -7,7 +7,7 @@
     <Side-Bar />
     <div id="main-view-container">
       <h3 v-if="this.$route.path !== '/home'">{{this.$route.name}}</h3>
-      <router-view/>
+      <router-view :key="$route.fullPath"/>
     </div>
   </main>
   <footer>

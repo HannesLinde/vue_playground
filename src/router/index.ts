@@ -1,32 +1,25 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
 import directives from '../views/DirectivesMain.vue';
-import directivesIntro from '../views/DirectivesIntro.vue';
-import directivesExercise from '../views/DirectivesExercise.vue';
-import formSubmission from '../views/examples/FormSubmission.vue';
+import DirectivesIntro from '../views/DirectivesIntro.vue';
+import DirectivesExercise from '../views/DirectivesExercise.vue';
 import Methods from '../views/MethodsBasic.vue';
 import ComputedProperties from '../views/ComputedProperties.vue';
-import watchers from '../components/watchers.vue';
+import Watchers from '../views/Watchers.vue';
 import PropsBasics from '../views/PropsBasics.vue';
-import mainComments from '../views/examples/CommentsSectionMain.vue';
-import parentComponent from '../views/EmitsParentComponent.vue';
-import slots from '../views/SlotsMain.vue';
-import defaultSlot from '../views/SlotsDefaultSlots.vue';
-import blog from '../views/BlogMain.vue'
-import componentExercise from '../views/SlotsExerciseMain.vue';
-import hooksExample from '../views/LifecycleHooksMain.vue';
-import modal from '../views/examples/ModalMain.vue';
-import animations from '../views/AnimationsMain.vue';
-import ballAnimation from '../components/AnimationsBallAnimationMain.vue';
-import classAnimations from '../components/AnimationsClassAnimation.vue';
-import sweetTransitions from '../components/AnimationsSweetTransitionsMain.vue';
-import compositionApi from '../views/CompoAPImain.vue';
-import storeBasics from '../components/storeBasics.vue';
-import composables from '../views/CompoAPIComposables.vue';
-import renderFunction from '../components/renderFunction.vue';
-import routingFun from '../components/routingFun.vue';
+import EmitsParentComponent from '../views/EmitsParentComponent.vue';
+import Slots from '../views/SlotsMain.vue';
+import DefaultSlot from '../views/SlotsDefaultSlots.vue';
+import SlotsExercise from '../views/SlotsExerciseMain.vue';
+import Hooks from '../views/LifecycleHooksMain.vue';
+import Modal from '../views/examples/ModalMain.vue';
+import Animations from '../views/AnimationsMain.vue';
+import CompositionApi from '../views/CompoAPImain.vue';
+import VuexBasics from '../components/VuexBasics.vue';
+import Composables from '../views/CompoAPIComposables.vue';
+import RenderFunction from '../views/RenderFunction.vue';
+import Routing from '../views/Routing.vue';
 import Styles from '../views/Styles.vue';
-import playground from '../components/playground.vue';
 import About from '../views/About.vue'
 import LearningResources from '../views/LearningResources.vue'
 
@@ -45,15 +38,8 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/resources',
     name: 'Learning Resources',
-    component: LearningResources
-  },
-  {
-    path: '/testing',
-    name: 'Testing',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "testing" */ '../components/testing.vue')
+    // component: LearningResources
+    component: () => import(/* webpackChunkName: "learningResources" */ '../views/LearningResources.vue')
   },
   {
     path: '/directives',
@@ -75,17 +61,12 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/directives/intro',
     name: 'Directives Intro',
-    component: directivesIntro
+    component: DirectivesIntro
   },
   {
     path: '/directives/exercise',
     name: 'Directives Exercise',
-    component: directivesExercise
-  },
-  {
-    path: '/simple-form',
-    name: 'Simple Form Submission',
-    component: formSubmission
+    component: DirectivesExercise
   },
   {
     path: '/methods',
@@ -100,7 +81,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/watchers',
     name: 'Watchers',
-    component: watchers
+    component: Watchers
   },
   {
     path: '/props',
@@ -108,89 +89,59 @@ const routes: Array<RouteRecordRaw> = [
     component: PropsBasics
   },
   {
-    path: '/comments',
-    name: 'comment-section',
-    component: mainComments
-  },
-  {
     path: '/emit-events',
     name: 'Emit event',
-    component: parentComponent
+    component: EmitsParentComponent
   },
   {
     path: '/slots',
     name: 'Slots',
-    component: slots
+    component: Slots
   },
   {
     path: '/default-slot',
     name: 'Slot default',
-    component: defaultSlot
-  },
-  {
-    path: '/blog',
-    name: 'Blog',
-    component: blog
+    component: DefaultSlot
   },
   {
     path: '/slots/exercise',
     name: 'Slots Exercise',
-    component: componentExercise
+    component: SlotsExercise
   },
   {
     path: '/hooks',
-    name: 'Lifecycle hooks example',
-    component: hooksExample
-  },
-  {
-    path: '/modal',
-    name: 'Modal and Transition',
-    component: modal
+    name: 'Lifecycle hooks',
+    component: Hooks
   },
   {
     path: '/animations',
     name: 'animations',
-    component: animations
-  },
-  {
-    path: '/animations/ball-animation',
-    name: 'ball animation',
-    component: ballAnimation
-  },
-  {
-    path: '/animations/class-animation',
-    name: 'class animation',
-    component: classAnimations
-  },
-  {
-    path: '/animations/sweet-transition',
-    name: 'sweet transition',
-    component: sweetTransitions
+    component: Animations
   },
   {
     path: '/composition-api',
     name: 'Composition API',
-    component: compositionApi
+    component: CompositionApi
   },
   {
-    path: '/store',
-    name: 'Store basics',
-    component: storeBasics
+    path: '/vuex-basics',
+    name: 'Vuex basics',
+    component: VuexBasics
   },
   {
     path: '/composition-api/composables',
     name: 'Composables',
-    component: composables
+    component: Composables
   },
   {
     path: '/render-function',
     name: 'Render function',
-    component: renderFunction
+    component: RenderFunction
   },
   {
-    path: '/routing-fun',
+    path: '/routing',
     name: 'Routing',
-    component: routingFun
+    component: Routing
   },
   {
     path: '/css-styles',
@@ -198,9 +149,29 @@ const routes: Array<RouteRecordRaw> = [
     component: Styles
   },
   {
-    path: '/playground',
-    name: 'Playground',
-    component: playground
+    path: "/examples",
+    name: 'Examples',
+    component: () => import(/*webpackChunkName: 'examples */ '../views/Examples.vue')
+  },
+  {
+    path: '/examples/blog',
+    name: 'Blog',
+    component: () => import(/*webpackChunkName 'blog'*/ '../views/examples/BlogMain.vue')
+  },
+  {
+    path: '/examples/modal',
+    name: 'Modal and Transition',
+    component: Modal
+  },
+  {
+    path: '/examples/form',
+    name: 'Form Submission',
+    component: () => import(/* webpackChunkName: "formSubmission" */ '../views/examples/FormSubmission.vue')
+  },
+  {
+    path: '/examples/comments',
+    name: 'Comment Section',
+    component: () => import(/* webpackChunkName: "commentsSection" */ '../views/examples/CommentsSectionMain.vue')
   }
 ]
 

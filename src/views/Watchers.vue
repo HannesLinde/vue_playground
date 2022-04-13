@@ -11,9 +11,6 @@
             <h3>{{orderStatus}}</h3>
             <p v-if="orderSubmitted">{{orderSubmitted}}</p>
             <p>You have ordered {{count}} tacos.</p>
-          <button @click="reset">
-            <p>Reset button is pretty useless because reset function is triggered by watcher anyways</p>
-reset            </button>
       </div>
 </template>
 
@@ -40,7 +37,7 @@ watch(orderStatus, async (newValue, oldValue) => {
   setTimeout(() => {
     orderSubmitted.value = '';
     reset()
-  }, 1000);
+  }, 1500);
   }
 );
 </script>
