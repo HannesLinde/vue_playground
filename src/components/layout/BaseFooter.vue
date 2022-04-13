@@ -9,9 +9,9 @@
 
 <script setup lang="ts">
 const routes = [
-  {route: 'about', text: 'About me'},
-  {route: 'resources', text: 'Learning ressources'},
-  {route: 'home', text: 'Home'}
+  {route: '/about', text: 'About me'},
+  {route: '/resources', text: 'Learning ressources'},
+  {route: '/home', text: 'Home'}
 ]
 </script>
 

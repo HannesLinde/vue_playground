@@ -6,51 +6,42 @@
   <p>
     Add a dynamic key to all router-view components using <code>$route.fullPath</code>. Ben Hong mentions three categories of routing:
   </p>
-  <ul>
-    <li>View components</li>
-    <li>Layout components</li>
-    <li>Routes</li>
-  </ul>
   <h3>Lazy loading</h3>
   <p>
     Beyond landing page: import components dynamically!
   </p>
-  <h3>this.$router</h3>
-  <h4>Router keys</h4>
-  <p v-for="objectKey in routerKeys" :key="objectKey">{{objectKey}}</p>
-  <pre>
-    {{router}}
-  </pre>
-  <h3>this.$route</h3>
-  <div>
+  <button @click="displayRouterObject = !displayRouterObject">Display router object</button>
+  <button @click="displayRouteObject = !displayRouteObject">Display route object</button>
+  <div id="keys-block">
+    <pre><h4>Router keys</h4>{{routerKeys}}</pre>
+    <pre><h4>Route keys</h4>{{routeKeys}}</pre>
+  </div>
+  <div id="container-route-object" v-if="displayRouteObject">
+    <h3>Full object of useRoute()</h3>
     <pre>{{route}}</pre>
-    <h4>Route keys</h4>
-    <p v-for="objectKey in routeKeys" :key="objectKey">{{objectKey}}</p>
+  </div>
+  <div id="container-router-object" v-if="displayRouterObject">
+    <h3>Full object of useRouter()</h3>
+    <pre>
+      {{router}}
+    </pre>
   </div>
 </template>
-<script lang="ts">
-import {defineComponent, reactive, toRefs} from "vue";
+<script setup lang="ts">
+import {defineComponent, reactive, ref, toRefs} from "vue";
 import {useRoute, useRouter} from "vue-router";
 
-export default defineComponent({
-  setup() {
-    const router = useRouter();
-    const route = useRoute();
+const router = useRouter();
+const route = useRoute();
 
-    const state = reactive({
-      routeKeys: Object.keys(route),
-      routerKeys: Object.keys((router))
-    })
+// eslint-disable-next-line no-undef
+const displayRouterObject = ref(false);
+const displayRouteObject = ref(false);
 
-    return {
-      ...toRefs(
-          state
-      ),
-      route,
-      router,
-    }
-  }
-})
+const routerKeys = Object.keys(router);
+const routeKeys = Object.keys(route);
+
+
 </script>
 <style lang="scss" scoped>
 ul {
@@ -59,5 +50,18 @@ ul {
   display:flex;
   flex-direction: column;
   align-items: center;
+}
+
+pre {
+  background-color: lightgreen;
+  border-radius: .5rem;
+  padding: 1rem;
+}
+
+#keys-block {
+  margin: 1rem;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1rem;
 }
 </style>

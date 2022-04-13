@@ -9,25 +9,21 @@
 <script setup lang="ts">
 const routes = [
   {path: '/directives', name: 'Directives'},
-  {path: '/simple-form', name: 'Simple Form'},
   {path: '/methods', name: 'Basic methods'},
   {path: '/computed-properties', name: 'Computed properties'},
   {path: '/watchers', name: 'Watchers'},
   {path: '/props', name: 'Props basics'},
-  {path: '/comments', name: 'comment-section'},
   {path: '/emit-events', name: 'Emit events'},
   {path: '/slots', name: 'Slots'},
-  {path: '/blog', name: 'Blog'},
   {path: '/hooks', name: 'Lifecycle hooks example'},
-  {path: '/modal', name: 'Modal and Transition'},
   {path: '/animations', name: 'Animations'},
   {path: '/composition-api', name: 'Composition API'},
-  {path: '/store', name: 'Store basics'},
   {path: '/render-function', name: 'Render function'},
-  {path: '/routing-fun',name: 'Routing'},
+  {path: '/routing',name: 'Routing'},
+  {path: '/vuex-basics', name: 'Store basics'},
+  {path: '/testing',name: 'Testing'},
   {path: '/css-styles',name: 'Styles'},
-  {path: '/playground',name: 'Playground'},
-  {path: '/testing',name: 'testing'}
+  {path: '/examples',name: 'Examples'}
 ];
 </script>
 
