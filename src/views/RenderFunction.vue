@@ -12,11 +12,13 @@ function increment() {
 // return the render function
 const render = () => {
   return [
+      h('div',
+          {class: 'container-render-function'},
+          [
     h(
         'h2',
         'Working with the render function'
     ),
-
     h(
         'div',
         {
@@ -28,7 +30,6 @@ const render = () => {
     h(
         'button',
         {
-          class: 'fancy-button',
           style: {
             color: 'pink',
             backgroundColor: 'green',
@@ -41,6 +42,17 @@ const render = () => {
     h('p',
         ` ${count.value}`
     )]
+      )
+  ]
 }
 
 </script>
+<style>
+.container-render-function {
+  background-color: #888888;
+}
+
+#test-div {
+  background-color: #4fc08d;
+}
+</style>
