@@ -6,7 +6,7 @@
   <main>
     <Side-Bar />
     <div id="main-view-container">
-      <h3 v-if="this.$route.path !== '/home'">{{this.$route.name}}</h3>
+      <h3>{{this.$route.name}}</h3>
       <router-view/>
     </div>
   </main>
