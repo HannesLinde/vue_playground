@@ -6,7 +6,7 @@
   <main>
     <Side-Bar />
     <div id="main-view-container">
-      <h3>{{this.$route.name}}</h3>
+      <h3>{{route.name}}</h3>
       <router-view/>
     </div>
   </main>
@@ -18,8 +18,10 @@
 <script setup lang="ts">
 import SideBar from './components/layout/SideBar';
 import BaseHeader from './components/layout/BaseHeader';
-
 import BaseFooter from './components/layout/BaseFooter';
+import {useRoute} from "vue-router";
+
+const route = useRoute()
 </script>
 
 <style lang="scss">
