@@ -1,7 +1,7 @@
 <template>
-  <p><strong>Props:</strong> {{littleMessage}}</p>
+  <p><strong>Props:</strong> {{props.littleMessage}}</p>
   <ul>
-      <li v-for="item in littleList" :key="item">{{item}}</li>
+      <li v-for="item in props.littleList" :key="item">{{item}}</li>
   </ul>
 </template>
 

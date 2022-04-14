@@ -13,7 +13,7 @@ export default createStore({
     increment: (state,payload) => {
       state.counter +=payload;
     },
-    setToZero: (state, payload) => {
+    setToZero: (state) => {
       state.counter = 0;
     }
   },

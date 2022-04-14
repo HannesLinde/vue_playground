@@ -19,7 +19,7 @@ import ClassAnimation from "@/components/AnimationsClassAnimation.vue";
 
 const active = ref('');
 
-const selectedComponent = computed((): any => {
+const selectedComponent = computed(() => {
   if (active.value === 'ball') return BallAnimation;
   if (active.value === 'class') return ClassAnimation;
   if (active.value === 'sweet') return SweetTransitions;

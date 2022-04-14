@@ -17,7 +17,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import {computed, defineComponent, ref} from "vue";
+import {computed, ref} from "vue";
 import TabPosts from "@/components/BlogTabPosts.vue";
 import TabHome from "@/components/BlogTabHome.vue";
 
@@ -30,7 +30,7 @@ const components = {
 
 const currentTab = ref('Home');
 const tabs = ref(['Home', 'Posts']);
-const currentTabComponent = computed((): any => {
+const currentTabComponent = computed(() => {
   const tabName = 'Tab' + currentTab.value;
   return components[tabName];
 });

@@ -7,18 +7,18 @@
   </div>
 </template>
 <script setup lang="ts">
-import {onActivated, onBeforeMount, onBeforeUnmount, onMounted, onServerPrefetch, onUnmounted, ref} from "vue";
+import {onBeforeMount, onBeforeUnmount, onMounted, onUnmounted, ref} from "vue";
 import axios from "axios";
 
 const joke = ref('joke');
 const getData = async() => {
+  console.log("[CHILD COMPONENT] getData() triggered");
   axios
     .get('https://api.chucknorris.io/jokes/random')
     .then(response => {
       console.log("[CHILD COMPONENT] response from server called by [getData()]",response);
       joke.value = response.data.value
     });
-  console.log("[CHILD COMPONENT] onActivated!");
 };
 
 onBeforeMount(() => {

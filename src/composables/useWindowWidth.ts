@@ -1,4 +1,4 @@
-import {onMounted, watch, ref} from "vue";
+import {onMounted, /*watch,*/ ref} from "vue";
 
 export default function useWindowWidth() {
     const width = ref(0);
@@ -13,7 +13,7 @@ export default function useWindowWidth() {
 //         width.value = newWidth}
 //     );
     window.addEventListener("resize", () => {
-        width.value = window.innerWidth;
+        return width.value = window.innerWidth;
     })
 
 

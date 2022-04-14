@@ -1,7 +1,7 @@
 <template>
   <div id="main-hook">
     <h3>Let's check out the lifecycle of this hur' child.</h3>
-    <h4>Check the console!</h4>
+    <p>Open the console and reload the page to see the timing of different hooks</p>
     <button @click="toggleDisplayChild">
       <span v-if="isShowing">Hide child</span>
       <span v-else>Show child</span>

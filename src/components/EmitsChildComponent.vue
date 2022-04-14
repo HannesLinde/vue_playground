@@ -1,7 +1,7 @@
 <template>
     <div class="child-container">
       <h4>Child component is orange</h4>
-        <button @click="$emit('deleteText', message, divisor)">Delete all text</button>
+        <button @click="deleteText">Delete all text</button>
     </div>
 </template>
 <script setup lang="ts">
@@ -13,6 +13,10 @@ const divisor = 3;
 const emit = defineEmits<{
   (e: 'deleteText', message: string, divisor: number): void
 }>()
+
+const deleteText = () => {
+  emit('deleteText', message, divisor)
+}
 </script>
 <style lang="scss" scoped>
 .child-container {

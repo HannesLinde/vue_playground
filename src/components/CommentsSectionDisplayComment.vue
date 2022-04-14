@@ -1,5 +1,5 @@
 <template>
-        <li>{{comment}}</li>
+        <li>{{props.comment}}</li>
 </template>
 <script setup lang='ts'>
 import {defineProps} from 'vue';

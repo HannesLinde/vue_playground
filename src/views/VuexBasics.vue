@@ -22,13 +22,5 @@
 
 </template>
 
-<script>
-import { defineComponent, reactive, toRefs} from 'vue';
-
-export default defineComponent({
-
-})
-</script>
-
 <style scoped lang="scss">
 </style>

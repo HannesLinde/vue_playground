@@ -14,7 +14,7 @@
     </div>
 </template>
 <script setup lang="ts">
-import {defineComponent, ref} from 'vue';
+import {ref} from 'vue';
 import childComponent from '../components/EmitsChildComponent.vue'
 const text = ref('');
 const deletionNotification = ref('');

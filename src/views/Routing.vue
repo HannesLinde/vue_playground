@@ -28,7 +28,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import {defineComponent, reactive, ref, toRefs} from "vue";
+import {ref} from "vue";
 import {useRoute, useRouter} from "vue-router";
 
 const router = useRouter();
