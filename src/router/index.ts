@@ -25,9 +25,9 @@ import SlotsExercise from '../views/SlotsExerciseMain.vue'
 import Examples from '../views/Examples.vue'
 
 const routes: Array<RouteRecordRaw> = [
-  {path: '/home', redirect: '/'},
+  {path: '/', redirect: '/home'},
   {
-    path: '/',
+    path: '/home',
     name: 'Home',
     component: Home
   },
