@@ -1,18 +1,58 @@
 <template>
   <div>
+    <div id="range-input">
+      <h2>Range input</h2>
     <input
       type="range"
       min="0"
       max="10"
       :value="rating"
       @input="changeRating"
+      data-test="range-input"
       />
-      <div>{{rating}}</div>
+      <div>Multiply <strong>{{rating}}</strong> with 10 = {{rating*10}}</div>
+      </div>
+      <div class="checkbox-inputs" data-test="checkbox-container">
+      <h2>Checkboxes</h2>
+        <p v-for="(selection, index) in meal" :key="selection.name+index" :data-test="`checkbox-wrapper-${selection.name}`">
+          <span class="checkbox-label">
+          <label :for="selection.name">{{selection.name}}</label>
+          <input
+            type="checkbox"
+            :id="selection.name"
+            :value="selection.selected"
+            :data-test="`checkbox-${selection.name}`"
+            @input="toggleCheckbox(selection)"
+          />
+          </span>
+          <span>{{selection.selected}}</span>
+        </p>
+      </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
+
+interface MealOption {
+  name: string,
+  selected: boolean | string
+}
+
+const meal = ref([
+  {
+    name: "Pizza",
+    selected: false,
+  },
+  {
+    name: "Spaghetti",
+    selected: false,
+  },
+  {
+    name: "Caesar's salad",
+    selected: false,
+  },
+]);
 
 const rating=ref(0);
 
@@ -21,13 +61,43 @@ const rating=ref(0);
   rating.value = Number(target.value);
 }; */
 
-const changeRating = (event: any) => {
-  rating.value = event.target.value;
-}
+const changeRating = (event: any): number => {
+  return rating.value = event.target.value;
+};
 
+const toggleCheckbox = (item: MealOption): boolean | string => {
+  if(typeof(item.selected)==='boolean') {
+    return item.selected = !item.selected;
+  } else {
+    return item.selected = item.selected.split("").reverse().join("");
+  }
+} 
 </script>
 
 <style lang="scss" scoped>
+.checkbox-inputs {
+  display: flex;
+  flex-direction: column;
+
+  p {
+    width: 20vw;
+    padding: .2rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  span {
+    margin: .5rem;
+  }
+}
+.checkbox-label {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+// RESTYLING RANGE INPUT
+// THIS IS TO HIDE ELEMENTS IN BROWSER
 input[type=range] {
   -webkit-appearance: none;
   margin: 18px 0;
@@ -36,6 +106,9 @@ input[type=range] {
 input[type=range]:focus {
   outline: none;
 }
+
+// ------
+
 input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
   height: 8.4px;
