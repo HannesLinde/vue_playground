@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar-container">
     <ul>
-      <li v-for="route in routes" :key="route.path"><router-link :to="route.path">{{route.name}}</router-link></li>
+      <li v-for="route in sortedRoutes" :key="route.path"><router-link :to="route.path">{{route.name}}</router-link></li>
   </ul>
   </div>
 </template>
@@ -25,6 +25,8 @@ const routes = [
   {path: '/css-styles',name: 'Styles'},
   {path: '/examples',name: 'Examples'}
 ];
+
+const sortedRoutes = routes.sort((a,b) => a.name.localeCompare(b.name));
 </script>
 
 <style lang="scss" scoped>
