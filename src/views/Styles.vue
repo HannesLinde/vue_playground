@@ -1,4 +1,5 @@
 <template>
+<button @click="goToInputStyling">Click here for input styling</button>
   <p>
     The <code>style</code> tag of single-file-components should get the <code>scoped</code> attribute by default. Sometimes (e.g. on #app-level) it might make sense to not use it. There is another way to keep CSS-classes local, using class bindings and <code>&#60;style module&#62;</code> For the paragraph below, the code looks like this
   </p>
@@ -15,22 +16,31 @@
   <h2 :class="toggleThisHeadline">Headline</h2>
   <pre>{{$style}}</pre>
 </template>
+
 <script setup lang="ts">
 import {ref, getCurrentInstance, computed} from "vue";
+import { useRouter } from "vue-router";
 import BaseCodeBlock from '@/components/BaseCodeBlock.vue';
 
-const headlineStyle = ref(false);
 const thisCompo = getCurrentInstance();
+const headlineStyle = ref(false);
 const styles = thisCompo?.ctx.$options.__cssModules.$style;
+
 const changeClass = () => {
   console.log("Styles", styles);
   console.log(typeof(thisCompo))
   headlineStyle.value = !headlineStyle.value
 }
+
 const toggleThisHeadline = computed(() => {
   // return headlineStyle.value ? getCurrentInstance()?.ctx.$options.__cssModules.$style.explosive : getCurrentInstance()?.ctx.$options.__cssModules.$style.boring;
   return headlineStyle.value ? styles.explosive : styles.boring;
 })
+
+const router = useRouter();
+const goToInputStyling = () => {
+  router.push({name: 'Input styles'});
+}
 </script>
 
 <!--

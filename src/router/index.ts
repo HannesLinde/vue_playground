@@ -162,6 +162,11 @@ const routes: Array<RouteRecordRaw> = [
     component: Styles
   },
   {
+    path: '/css-styles/inputs',
+    name: 'Input styles',
+    component: () => import(/*webpackChunkName: inputStyles*/ '@/views/StyleInputs.vue')
+  },
+  {
     path: '/examples',
     name: 'Examples',
     component: Examples

@@ -2,7 +2,10 @@
 - Write Unit tests
   - API
   - Store
-- Write an E2E test
+- Write E2E tests
+  - for composition API view
+  - for 'store basics' view
+- make menu responsive (hamburger!)
 - Learning Resources site
 - About me site
 - Build a quiz site
