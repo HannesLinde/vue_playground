@@ -1,11 +1,31 @@
 <template>
-  <p><strong>Props:</strong> {{props.littleMessage}}</p>
+  <p><strong>Props:</strong> {{littleMessage}}</p>
   <ul>
-      <li v-for="item in props.littleList" :key="item">{{item}}</li>
+      <li v-for="item in littleList" :key="item">{{item}}</li>
   </ul>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  props: {
+    littleMessage: {
+      type: String,
+      required: false,
+      default: 'I am default props',
+    },
+    littleList: {
+      type: Array,
+      required: false,
+      default: function () {
+        return ["This", "is", "default"]
+      }
+    }
+  }
+});
+</script>
+<!--<script setup lang="ts">
 import { defineProps } from 'vue';
 
 const props = defineProps({
@@ -21,8 +41,9 @@ const props = defineProps({
       return ["This", "is", "default"]
     }
   }
+
 });
-</script>
+</script>-->
 <style lang="scss" scoped>
 li{
   text-align: left;
