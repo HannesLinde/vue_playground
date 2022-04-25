@@ -13,9 +13,18 @@
 
   <h2>Sample usage</h2>
   <h3>&#123;&#123;this.$store.state.counter&#125;&#125;</h3>
-  <p>{{this.$store.state.counter}}</p>
-  <p><button @click="this.$store.dispatch('asyncIncrement',{by: 3, duration: 1000})">Increment in a second</button></p>
-  <p><button @click="this.$store.dispatch('reset')">Reset</button></p>
+  <p data-test="increment-counter">{{this.$store.state.counter}}</p>
+  <p>
+    <button
+        @click="this.$store.dispatch('asyncIncrement',{by: 3, duration: 1000})"
+        data-test="increment-button"
+    >Increment in a second</button>
+  </p>
+  <p>
+    <button
+        @click="this.$store.dispatch('reset')"
+        data-test="reset-button"
+    >Reset</button></p>
 
   <h3>Enterprise level</h3>
   <p>Here's a nice example for a big store: <a href ="https://github.com/soloschenko-grigoriy/vue-vuex-ts">Vue-vuex-ts by Grigoriy Soloschenko</a></p>

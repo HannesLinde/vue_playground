@@ -13,7 +13,7 @@ describe('Testing composition API site', () => {
 
         });
 
-        it.only('should display current item count', () => {
+        it('should display current item count', () => {
             cy.get('[data-test="add-item-button"]').then(itemButton => {
                 const clicks = 5;
                 for (let click = 1; click <= clicks; click++) {
