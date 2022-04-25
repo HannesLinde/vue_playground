@@ -48,7 +48,7 @@ describe('My First Test', () => {
     it('should set the range and verify it', () => {
       cy.get('[data-test="range-input"]').invoke('val', '7').trigger('input').then(el => {
         expect(el).to.have.value('7');
-      })
-    })
+      });
+    });
   })
 });

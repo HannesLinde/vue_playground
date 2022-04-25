@@ -1,4 +1,5 @@
 <template>
+  <router-link :to="{name: 'Testing inputs'}">Input testing</router-link>
 <h2>Best practices</h2>
   <blockquote>If you can only have two tests for your application...
   <br />1.Can the user login?

@@ -1,6 +1,6 @@
 <template>
-  <div id="compo-api-main">
-    <p>Composition API helps us to encapsulate bits of functionality that we want to reuse. Write reusable functional code in seperate files (e.g. src/composables/...) and import respective functions in your component. THen include the functions/values in the setup directive.</p>
+  <div id="compo-api-main" data-test="compo-api-main">
+    <p id="compo-api-intro">Composition API helps us to encapsulate bits of functionality that we want to reuse. Write reusable functional code in seperate files (e.g. src/composables/...) and import respective functions in your component. THen include the functions/values in the setup directive.</p>
     <router-link :to="{name: 'Composables'}">Composable sample</router-link>
     <h3>Order from: <strong>{{ restaurantName }}</strong></h3>
     <p>Options</p>
@@ -9,7 +9,7 @@
       <p>Delivery time: {{ deliveryTime }} minutes</p>
       <p v-if="freeDelivery">Free Delivery!</p>
     </ul>
-    <button @click="addItems">Add an item: {{ numItems }}</button>
+    <button @click="addItems" data-test="add-item-button">Add an item: {{ numItems }}</button>
     <p>By clicking on the button below you can toggle a component that uses <code>reactive()</code> instead of <code>ref()</code>. It looks perfectly the same, just the code is different.</p>
   <div><button @click="testAlternative = !testAlternative">Test alternative</button></div>
   <div><alternative-script v-if="testAlternative" /></div>

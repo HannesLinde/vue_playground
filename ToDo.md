@@ -1,13 +1,14 @@
 ## Next up
-- Style checkboxes
-- Implement OOCSS
-- Add hamburger menu for responsiveness
 - Write more Unit tests
   - API
   - Store
 - Write more E2E tests
   - for composition API view
   - for 'store basics' view
+- Style checkboxes
+- Implement OOCSS
+- Add hamburger menu for responsiveness
 - Learning Resources site
 - About me site
 - Build a quiz site
+- remove _redirects error
