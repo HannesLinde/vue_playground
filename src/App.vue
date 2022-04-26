@@ -16,9 +16,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import SideBar from './components/layout/SideBar';
-import BaseHeader from './components/layout/BaseHeader';
-import BaseFooter from './components/layout/BaseFooter';
+import SideBar from './components/layout/sideBar.vue';
 import {useRoute} from "vue-router";
 
 const route = useRoute()

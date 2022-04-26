@@ -49,7 +49,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/testing/inputs',
     name: 'Testing inputs',
-    component: () => import(/* webpackChunkName: "testingInputs */ '@/views/Testing_Inputs.vue')
+    component: () => import(/* webpackChunkName: "testingInputs" */ '@/views/Testing_Inputs.vue')
   },
   {
     path: '/directives',
@@ -169,7 +169,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/css-styles/inputs',
     name: 'Input styles',
-    component: () => import(/*webpackChunkName: inputStyles*/ '@/views/StyleInputs.vue')
+    component: () => import(/*webpackChunkName: "inputStyles" */ '@/views/StyleInputs.vue')
   },
   {
     path: '/examples',
