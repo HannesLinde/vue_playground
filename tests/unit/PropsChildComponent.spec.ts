@@ -16,7 +16,7 @@ describe('Feed props into PropsChildComponent', () => {
     });
 
     it('should render props list in a list', () => {
-        wrapper.props().littleList.forEach((prop: string) => expect(wrapper.text()).to.include(prop));
+        wrapper.props().littleList.forEach((prop: string) => expect(wrapper.html()).to.include(prop));
         expect(wrapper.text()).to.include('Test2');
         expect(wrapper.html()).to.contain('li');
     });

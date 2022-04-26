@@ -1,14 +1,16 @@
 ## Next up
-- Write more Unit tests
-  - API
+- Add hamburger menu for responsiveness
+- Write e2e and Unit tests
   - Store
-- Write more E2E tests
-  - for composition API view
-  - for 'store basics' view
+  - LifecycleHooks --> child contains axios call!
+  - examples/comments
+  - examples/form-submission --> API
 - Style checkboxes
 - Implement OOCSS
-- Add hamburger menu for responsiveness
+
+## Backlog
+- add services folder and refactor all api calls into services/*.ts files
+- Build a quiz site
 - Learning Resources site
 - About me site
-- Build a quiz site
 - remove _redirects error
