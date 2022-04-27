@@ -12,11 +12,11 @@ const divisor = 3;
 
 const emit = defineEmits<{
   (e: 'deleteText', message: string, divisor: number): void
-}>()
+}>();
 
 const deleteText = () => {
   emit('deleteText', message, divisor)
-}
+};
 </script>
 <style lang="scss" scoped>
 .child-container {

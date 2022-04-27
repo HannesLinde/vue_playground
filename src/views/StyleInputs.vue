@@ -16,16 +16,19 @@
       <h2>Checkboxes</h2>
         <p v-for="(selection, index) in meal" :key="selection.name+index" :data-test="`checkbox-wrapper-${selection.name}`">
           <span class="checkbox-label">
-          <label :for="selection.name">{{selection.name}}</label>
-          <input
-            type="checkbox"
-            :id="selection.name"
-            :value="selection.selected"
-            :data-test="`checkbox-${selection.name}`"
-            @input="toggleCheckbox(selection)"
-          />
+            <label :for="selection.name" class="checkbox-input-container">
+              <span>{{selection.name}}: </span>
+                <input
+                type="checkbox"
+                :id="selection.name"
+                :value="selection.selected"
+                :data-test="`checkbox-${selection.name}`"
+                @input="toggleCheckbox(selection)"
+              />
+              <span class="checkmark"></span>
+            </label>
+            <span>{{selection.selected}}</span>
           </span>
-          <span>{{selection.selected}}</span>
         </p>
       </div>
   </div>
@@ -56,11 +59,6 @@ const meal = ref([
 
 const rating=ref(0);
 
-/* const changeRating = (event: Event) => {
-  const target = (<HTMLInputElement>event.target);
-  rating.value = Number(target.value);
-}; */
-
 const changeRating = (event: any): number => {
   return rating.value = event.target.value;
 };
@@ -71,29 +69,91 @@ const toggleCheckbox = (item: MealOption): boolean | string => {
   } else {
     return item.selected = item.selected.split("").reverse().join("");
   }
-} 
+}
 </script>
 
 <style lang="scss" scoped>
+
+input[type=checkbox] {
+  -webkit-appearance: none;
+  width: 100%;
+}
+input[type=checkbox]:focus {
+  outline: none;
+}
+
+input[type=checkbox] {
+  position: absolute;
+  cursor: pointer;
+  height: 1rem;
+  width: 1rem;
+}
+
 .checkbox-inputs {
   display: flex;
   flex-direction: column;
-
   p {
-    width: 20vw;
-    padding: .2rem;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  span {
-    margin: .5rem;
+    width: 80vw;
   }
 }
+
 .checkbox-label {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+
+  .checkbox-input-container {
+    width: 60%;
+    //display: flex;
+    //justify-content: space-between;
+    display: block;
+    text-align: left;
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: .5rem;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    span {
+      margin: 0rem .1rem;
+    }
+  }
+
+  .checkmark {
+    position: absolute;
+    height: 1rem;
+    width: 1rem;
+    background-color: #ff9000;
+    border: solid 1px #888;
+  }
+
+  .checkmark:after {
+    content: '';
+    position: absolute;
+    display: none;
+  }
+
+  .checkbox-input-container input[type=checkbox]:checked ~ .checkmark {
+    background-color: #00f770;
+  }
+
+  .checkbox-input-container input[type=checkbox]:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  .checkbox-input-container .checkmark:after {
+    left: .25rem;
+    width: .3rem;
+    height: .6rem;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
 }
 
 // RESTYLING RANGE INPUT

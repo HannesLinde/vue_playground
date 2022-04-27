@@ -1,5 +1,4 @@
 ## Next up
-- Add hamburger menu for responsiveness
 - Write e2e and Unit tests
   - Store
   - LifecycleHooks --> child contains axios call!
@@ -9,6 +8,7 @@
 - Implement OOCSS
 
 ## Backlog
+- typing of webpack configs
 - add services folder and refactor all api calls into services/*.ts files
 - Build a quiz site
 - Learning Resources site

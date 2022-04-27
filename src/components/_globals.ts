@@ -1,10 +1,12 @@
+import {App} from "vue";
+
 export const requireComponent: any = require.context(
     './layout/',
     true,
     /Base[\w-]+\.vue$/
 );
-
-export const registerComponents = (requiredComponents: any, app: any) => {
+console.log(requireComponent);
+export const registerComponents = (requiredComponents: any, app: App) => {
     requiredComponents.keys().forEach((fileName: string) => {
         // Get the component config
         const componentConfig = requiredComponents(fileName);

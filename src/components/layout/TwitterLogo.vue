@@ -11,8 +11,8 @@
       version="1.1"
       id="svg3626"
       viewBox="0 0 300.00006 244.18703"
-      height="25"
-      width="25">
+      height="40"
+      width="40">
     <defs
         id="defs3628" />
     <metadata

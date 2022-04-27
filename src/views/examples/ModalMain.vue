@@ -69,16 +69,6 @@ h4 {
   margin: 0 0 15px;
 }
 
-.modal {
-  background: cyan;
-  color: black;
-  padding: 20px;
-  margin-top: 200px;
-  width: 200px;
-  position: absolute;
-  border: 2px solid black;
-}
-
 .bk {
   transition: all 0.05s ease-out;
 }

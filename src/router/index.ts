@@ -3,7 +3,6 @@ import Home from '../views/Home.vue';
 import Directives from '../views/DirectivesMain.vue';
 import DirectivesIntro from '../views/DirectivesIntro.vue';
 import DirectivesExercise from '../views/DirectivesExercise.vue';
-import Methods from '../views/MethodsBasic.vue';
 import ComputedProperties from '../views/ComputedProperties.vue';
 import Watchers from '../views/Watchers.vue';
 import PropsBasics from '../views/PropsBasics.vue';
@@ -54,17 +53,17 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/directives',
     name: 'Directives',
-    component: Directives,
+    component: () => import(/* webpackChunkName: "directives" */ '@/views/DirectivesMain.vue')
       },
   {
     path: '/directives/intro',
     name: 'Directives Intro',
-    component: DirectivesIntro
+    component: () => import(/* webpackChunkName: "directivesIntro" */ '@/views/DirectivesIntro.vue')
   },
   {
     path: '/directives/exercise',
     name: 'Directives Exercise',
-    component: DirectivesExercise
+    component: () => import(/* webpackChunkName: "directivesExercise" */ '@/views/DirectivesExercise.vue')
   },
   {
     path: '/examples/form',
@@ -74,22 +73,22 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/methods',
     name: 'Methods',
-    component: Methods
+    component: () => import(/* webpackChunkName: "methods" */ '@/views/MethodsBasic.vue')
   },
   {
     path: '/computed-properties',
     name: 'Computed properties',
-    component: ComputedProperties
+    component: () => import(/* webpackChunkName: "computedProperties" */ '@/views/ComputedProperties.vue')
   },
   {
     path: '/watchers',
     name: 'Watchers',
-    component: Watchers
+    component: () => import(/* webpackChunkName: "watchers" */ '@/views/Watchers.vue')
   },
   {
     path: '/props',
     name: 'Props basics',
-    component: PropsBasics
+    component: () => import(/* webpackChunkName: "propsBasics" */ '@/views/PropsBasics.vue')
   },
   {
     path: '/examples/comments',
@@ -98,18 +97,23 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/emit-events',
-    name: 'Emit event',
-    component: EmitsParentComponent
+    name: 'Emit events',
+    component: () => import(/* webpackChunkName: "emitsParent" */ '@/views/EmitsParentComponent.vue')
   },
   {
     path: '/slots',
     name: 'Slots',
-    component: Slots
+    component: () => import(/* webpackChunkName: "slots" */ '@/views/SlotsMain.vue')
   },
   {
     path: '/default-slot',
     name: 'Slot default',
-    component: DefaultSlot
+    component: () => import(/* webpackChunkName: "slotDefault" */ '@/views/SlotsDefaultSlots.vue')
+  },
+  {
+    path: '/slots/exercise',
+    name: 'Slots Exercise',
+    component: () => import(/* webpackChunkName: "slotExercise" */ '@/views/SlotsExerciseMain.vue')
   },
   {
     path: '/examples/blog',
@@ -117,54 +121,49 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import(/* webpackChunkName: 'blog' */ '../views/examples/BlogMain.vue')
   },
   {
-    path: '/slots/exercise',
-    name: 'Slots Exercise',
-    component: SlotsExercise
-  },
-  {
     path: '/hooks',
     name: 'Lifecycle hooks',
-    component: hooksExample
+    component: () => import(/* webpackChunkName: "lifecycleHooks" */ '@/views/LifecycleHooksMain.vue')
   },
   {
     path: '/examples/modal',
     name: 'Modal and Transition',
-    component: Modal
+    component: () => import(/* webpackChunkName: "modal" */ '@/views/examples/ModalMain.vue')
   },
   {
     path: '/animations',
-    name: 'animations',
-    component: Animations
+    name: 'Animations',
+    component: () => import(/* webpackChunkName: "animations" */ '@/views/AnimationsMain.vue')
   },
   {
     path: '/composition-api',
     name: 'Composition API',
-    component: CompositionApi
+    component: () => import(/* webpackChunkName: "compositionAPI" */ '@/views/CompoAPImain.vue')
   },
   {
     path: '/vuex-basics',
-    name: 'Store basics',
-    component: VuexBasics
+    name: 'Vuex basics',
+    component: () => import(/* webpackChunkName: "vuexBasics" */ '@/views/VuexBasics.vue')
   },
   {
     path: '/composition-api/composables',
     name: 'Composables',
-    component: Composables
+    component: () => import(/* webpackChunkName: "composables" */ '@/views/CompoAPIComposables.vue')
   },
   {
     path: '/render-function',
     name: 'Render function',
-    component: RenderFunction
+    component: () => import(/* webpackChunkName: "renderFunction" */ '@/views/RenderFunction.vue')
   },
   {
     path: '/routing',
     name: 'Routing',
-    component: Routing
+    component: () => import(/* webpackChunkName: "routing" */ '@/views/Routing.vue')
   },
   {
-    path: '/css-styles',
-    name: 'CSS Styles',
-    component: Styles
+    path: '/styles',
+    name: 'Styles',
+    component: () => import(/* webpackChunkName: "cssStyles" */ '@/views/Styles.vue')
   },
   {
     path: '/css-styles/inputs',
@@ -174,7 +173,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/examples',
     name: 'Examples',
-    component: Examples
+    component: () => import(/* webpackChunkName: "examples" */ '@/views/Examples.vue')
   }
 ]
 
